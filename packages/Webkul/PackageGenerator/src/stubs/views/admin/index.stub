@@ -1,0 +1,23 @@
+@extends('admin::layouts.master')
+
+@section('page_title')
+    Package $CAPITALIZE_NAME$
+@stop
+
+@section('content-wrapper')
+
+    <div class="content full-page dashboard">
+        <div class="page-header">
+            <div class="page-title">
+                <h1>Package $CAPITALIZE_NAME$</h1>
+            </div>
+
+            <div class="page-action">
+            </div>
+        </div>
+
+        <div class="page-content">
+        </div>
+    </div>
+
+@stop

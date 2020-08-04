@@ -1,0 +1,9 @@
+<?php
+
+Route::group(['middleware' => ['web', 'admin']], function () {
+
+    Route::get('/admin/$LOWER_NAME$', '$CONTROLLER_CLASS_NAME$@index')->defaults('_config', [
+        'view' => '$LOWER_NAME$::admin.index',
+    ])->name('$LOWER_NAME$.admin.index');
+
+});

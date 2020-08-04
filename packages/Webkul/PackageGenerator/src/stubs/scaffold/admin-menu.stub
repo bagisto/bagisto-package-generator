@@ -1,0 +1,11 @@
+<?php
+
+return [
+    [
+        'key' => '$LOWER_NAME$',
+        'name' => '$CAPITALIZE_NAME$',
+        'route' => '$LOWER_NAME$.admin.index',
+        'sort' => 2,
+        'icon-class' => 'temp-icon',
+    ]
+];

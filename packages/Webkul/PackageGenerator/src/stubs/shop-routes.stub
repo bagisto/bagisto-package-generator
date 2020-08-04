@@ -1,0 +1,9 @@
+<?php
+
+Route::group(['middleware' => ['web', 'theme', 'locale', 'currency']], function () {
+
+    Route::get('/$LOWER_NAME$', '$CONTROLLER_CLASS_NAME$@index')->defaults('_config', [
+        'view' => '$LOWER_NAME$::shop.index',
+    ])->name('$LOWER_NAME$.shop.index');
+
+});
