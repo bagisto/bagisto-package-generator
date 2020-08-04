@@ -33,8 +33,4 @@ Webkul\PackageGenerator\Providers\PackageGeneratorServiceProvider::class
 composer dump-autoload
 ~~~
 
-~~~
-php artisan route:cache
-~~~
-
 > That's it, now just execute the project on your specified domain.
