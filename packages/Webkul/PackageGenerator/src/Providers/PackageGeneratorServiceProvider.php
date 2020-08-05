@@ -10,6 +10,12 @@ use Webkul\PackageGenerator\Console\Command\AdminControllerMakeCommand;
 use Webkul\PackageGenerator\Console\Command\ShopControllerMakeCommand;
 use Webkul\PackageGenerator\Console\Command\AdminRouteMakeCommand;
 use Webkul\PackageGenerator\Console\Command\ShopRouteMakeCommand;
+use Webkul\PackageGenerator\Console\Command\MigrationMakeCommand;
+use Webkul\PackageGenerator\Console\Command\ModelMakeCommand;
+use Webkul\PackageGenerator\Console\Command\ModelProxyMakeCommand;
+use Webkul\PackageGenerator\Console\Command\ModelContractMakeCommand;
+use Webkul\PackageGenerator\Console\Command\RepositoryMakeCommand;
+use Webkul\PackageGenerator\Console\Command\SeederMakeCommand;
 
 class PackageGeneratorServiceProvider extends ServiceProvider
 {
@@ -48,6 +54,12 @@ class PackageGeneratorServiceProvider extends ServiceProvider
                 ShopControllerMakeCommand::class,
                 AdminRouteMakeCommand::class,
                 ShopRouteMakeCommand::class,
+                MigrationMakeCommand::class,
+                ModelMakeCommand::class,
+                ModelProxyMakeCommand::class,
+                ModelContractMakeCommand::class,
+                RepositoryMakeCommand::class,
+                SeederMakeCommand::class,
             ]);
         }
     }

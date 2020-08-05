@@ -1,0 +1,18 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Webkul\Core\Eloquent\Repository;
+
+class $CLASS$ extends Repository
+{
+    /**
+     * Specify Model class name
+     *
+     * @return mixed
+     */
+    function model()
+    {
+        return '$CONTRACT_CLASS$';
+    }
+}

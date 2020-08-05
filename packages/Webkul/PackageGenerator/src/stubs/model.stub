@@ -1,0 +1,12 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Illuminate\Database\Eloquent\Model;
+use Webkul\Product\Models\ProductProxy;
+use $PACKAGE$\Contracts\$CLASS$ as $CLASS$Contract;
+
+class $CLASS$ extends Model implements $CLASS$Contract
+{
+    protected $fillable = [];
+}
