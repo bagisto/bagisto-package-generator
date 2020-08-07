@@ -152,14 +152,14 @@ class PackageGenerator
     }
 
     /**
-     * Set package type.
+     * Set package plain.
      *
-     * @param  string  $type
+     * @param  string  $plain
      * @return Webkul\PackageGenerator\Generators\PackageGenerator
      */
-    public function setType($type)
+    public function setPlain($plain)
     {
-        $this->type = $type;
+        $this->plain = $plain;
 
         return $this;
     }
@@ -196,7 +196,7 @@ class PackageGenerator
 
         $this->createFolders();
 
-        if ($this->type != 'simple') {
+        if (! $this->plain) {
             $this->createFiles();
 
             $this->createClasses();

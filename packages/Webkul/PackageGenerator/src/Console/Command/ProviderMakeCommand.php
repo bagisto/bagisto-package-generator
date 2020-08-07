@@ -26,7 +26,7 @@ class ProviderMakeCommand extends MakeCommand
      */
     protected function getStubContents()
     {
-        $stub = $this->hasOption('type') ? 'provider' : 'scaffold/package-provider';
+        $stub = $this->hasOption('plain') ? 'provider' : 'scaffold/package-provider';
 
         return $this->packageGenerator->getStubContents($stub, $this->getStubVariables());
     }
