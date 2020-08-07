@@ -2,30 +2,28 @@
 
 namespace Webkul\PackageGenerator\Console\Command;
 
-use Webkul\PackageGenerator\Generators\PackageGenerator;
-
-class ModuleProviderMakeCommand extends MakeCommand
+class MiddlewareMakeCommand extends MakeCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'package:make-module-provider {name} {package} {--force}';
+    protected $signature = 'package:make-middleware {name} {package}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new module service provider.';
+    protected $description = 'Create a new middleware.';
 
     /**
      * @return mixed
      */
     protected function getStubContents()
     {
-        return $this->packageGenerator->getStubContents('scaffold/module-provider', $this->getStubVariables());
+        return $this->packageGenerator->getStubContents('middleware', $this->getStubVariables());
     }
 
     /**
@@ -34,7 +32,7 @@ class ModuleProviderMakeCommand extends MakeCommand
     protected function getStubVariables()
     {
         return [
-            'NAMESPACE' => $this->getClassNamespace($this->argument('package') . '/Providers'),
+            'NAMESPACE' => $this->getClassNamespace($this->argument('package') . '/Http/Middleware'),
             'CLASS'     => $this->getClassName(),
         ];
     }
@@ -44,7 +42,7 @@ class ModuleProviderMakeCommand extends MakeCommand
      */
     protected function getSourceFilePath()
     {
-        $path = base_path('packages/' . $this->argument('package')) . '/src/Providers';
+        $path = base_path('packages/' . $this->argument('package')) . '/src/Http/Middleware';
 
         return $path . '/' . $this->getClassName() . '.php';
     }

@@ -86,7 +86,7 @@ class PackageGenerator
      */
     protected $paths = [
         'config'     => 'Config',
-        'command'    => 'Console',
+        'command'    => 'Console/Commands',
         'migration'  => 'Database/Migrations',
         'seeder'     => 'Database/Seeders',
         'contracts'  => 'Contracts',
@@ -99,7 +99,7 @@ class PackageGenerator
         'repository' => 'Repositories',
         'event'      => 'Events',
         'listener'   => 'Listeners',
-        'emails'     => 'Emails',
+        'emails'     => 'Mail',
         'assets'     => 'Resources/assets',
         'lang'       => 'Resources/lang',
         'views'      => 'Resources/views',

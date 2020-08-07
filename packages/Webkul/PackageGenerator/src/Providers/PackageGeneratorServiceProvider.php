@@ -16,6 +16,13 @@ use Webkul\PackageGenerator\Console\Command\ModelProxyMakeCommand;
 use Webkul\PackageGenerator\Console\Command\ModelContractMakeCommand;
 use Webkul\PackageGenerator\Console\Command\RepositoryMakeCommand;
 use Webkul\PackageGenerator\Console\Command\SeederMakeCommand;
+use Webkul\PackageGenerator\Console\Command\MailMakeCommand;
+use Webkul\PackageGenerator\Console\Command\CommandMakeCommand;
+use Webkul\PackageGenerator\Console\Command\EventMakeCommand;
+use Webkul\PackageGenerator\Console\Command\ListenerMakeCommand;
+use Webkul\PackageGenerator\Console\Command\MiddlewareMakeCommand;
+use Webkul\PackageGenerator\Console\Command\RequestMakeCommand;
+use Webkul\PackageGenerator\Console\Command\NotificationMakeCommand;
 
 class PackageGeneratorServiceProvider extends ServiceProvider
 {
@@ -60,6 +67,13 @@ class PackageGeneratorServiceProvider extends ServiceProvider
                 ModelContractMakeCommand::class,
                 RepositoryMakeCommand::class,
                 SeederMakeCommand::class,
+                MailMakeCommand::class,
+                CommandMakeCommand::class,
+                EventMakeCommand::class,
+                ListenerMakeCommand::class,
+                MiddlewareMakeCommand::class,
+                RequestMakeCommand::class,
+                NotificationMakeCommand::class,
             ]);
         }
     }
