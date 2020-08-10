@@ -9,7 +9,7 @@ class MiddlewareMakeCommand extends MakeCommand
      *
      * @var string
      */
-    protected $signature = 'package:make-middleware {name} {package}';
+    protected $signature = 'package:make-middleware {name} {package} {--force}';
 
     /**
      * The console command description.

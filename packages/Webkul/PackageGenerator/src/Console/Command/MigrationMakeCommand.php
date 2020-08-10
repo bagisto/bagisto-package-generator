@@ -9,7 +9,7 @@ class MigrationMakeCommand extends MakeCommand
      *
      * @var string
      */
-    protected $signature = 'package:make-migration {name} {package}';
+    protected $signature = 'package:make-migration {name} {package} {--force}';
 
     /**
      * The console command description.

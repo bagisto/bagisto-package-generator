@@ -9,7 +9,7 @@ class EventMakeCommand extends MakeCommand
      *
      * @var string
      */
-    protected $signature = 'package:make-event {name} {package}';
+    protected $signature = 'package:make-event {name} {package} {--force}';
 
     /**
      * The console command description.

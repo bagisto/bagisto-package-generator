@@ -23,6 +23,7 @@ use Webkul\PackageGenerator\Console\Command\ListenerMakeCommand;
 use Webkul\PackageGenerator\Console\Command\MiddlewareMakeCommand;
 use Webkul\PackageGenerator\Console\Command\RequestMakeCommand;
 use Webkul\PackageGenerator\Console\Command\NotificationMakeCommand;
+use Webkul\PackageGenerator\Console\Command\DatagridMakeCommand;
 
 class PackageGeneratorServiceProvider extends ServiceProvider
 {
@@ -74,6 +75,7 @@ class PackageGeneratorServiceProvider extends ServiceProvider
                 MiddlewareMakeCommand::class,
                 RequestMakeCommand::class,
                 NotificationMakeCommand::class,
+                DatagridMakeCommand::class,
             ]);
         }
     }

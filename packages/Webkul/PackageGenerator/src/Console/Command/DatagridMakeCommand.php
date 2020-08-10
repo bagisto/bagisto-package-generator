@@ -2,28 +2,28 @@
 
 namespace Webkul\PackageGenerator\Console\Command;
 
-class NotificationMakeCommand extends MakeCommand
+class DatagridMakeCommand extends MakeCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'package:make-notification {name} {package} {--force}';
+    protected $signature = 'package:make-datagrid {name} {package} {--force}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new notification.';
+    protected $description = 'Create a new datagrid.';
 
     /**
      * @return mixed
      */
     protected function getStubContents()
     {
-        return $this->packageGenerator->getStubContents('notification', $this->getStubVariables());
+        return $this->packageGenerator->getStubContents('datagrid', $this->getStubVariables());
     }
 
     /**
@@ -32,7 +32,7 @@ class NotificationMakeCommand extends MakeCommand
     protected function getStubVariables()
     {
         return [
-            'NAMESPACE' => $this->getClassNamespace($this->argument('package') . '/Notifications'),
+            'NAMESPACE' => $this->getClassNamespace($this->argument('package') . '/Datagrids'),
             'CLASS'     => $this->getClassName(),
         ];
     }
@@ -42,7 +42,7 @@ class NotificationMakeCommand extends MakeCommand
      */
     protected function getSourceFilePath()
     {
-        $path = base_path('packages/' . $this->argument('package')) . '/src/Notifications';
+        $path = base_path('packages/' . $this->argument('package')) . '/src/Datagrids';
 
         return $path . '/' . $this->getClassName() . '.php';
     }

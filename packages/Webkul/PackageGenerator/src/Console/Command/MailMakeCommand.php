@@ -9,7 +9,7 @@ class MailMakeCommand extends MakeCommand
      *
      * @var string
      */
-    protected $signature = 'package:make-mail {name} {package}';
+    protected $signature = 'package:make-mail {name} {package} {--force}';
 
     /**
      * The console command description.

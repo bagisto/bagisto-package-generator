@@ -9,7 +9,7 @@ class ListenerMakeCommand extends MakeCommand
      *
      * @var string
      */
-    protected $signature = 'package:make-listener {name} {package}';
+    protected $signature = 'package:make-listener {name} {package} {--force}';
 
     /**
      * The console command description.

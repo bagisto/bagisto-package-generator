@@ -9,7 +9,7 @@ class RequestMakeCommand extends MakeCommand
      *
      * @var string
      */
-    protected $signature = 'package:make-request {name} {package}';
+    protected $signature = 'package:make-request {name} {package} {--force}';
 
     /**
      * The console command description.
