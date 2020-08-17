@@ -24,6 +24,9 @@ use Webkul\PackageGenerator\Console\Command\MiddlewareMakeCommand;
 use Webkul\PackageGenerator\Console\Command\RequestMakeCommand;
 use Webkul\PackageGenerator\Console\Command\NotificationMakeCommand;
 use Webkul\PackageGenerator\Console\Command\DatagridMakeCommand;
+use Webkul\PackageGenerator\Console\Command\PaymentPackageMakeCommand;
+use Webkul\PackageGenerator\Console\Command\PaymentMethodProviderMakeCommand;
+use Webkul\PackageGenerator\Console\Command\PaymentMakeCommand;
 
 class PackageGeneratorServiceProvider extends ServiceProvider
 {
@@ -76,6 +79,9 @@ class PackageGeneratorServiceProvider extends ServiceProvider
                 RequestMakeCommand::class,
                 NotificationMakeCommand::class,
                 DatagridMakeCommand::class,
+                PaymentPackageMakeCommand::class,
+                PaymentMethodProviderMakeCommand::class,
+                PaymentMakeCommand::class,
             ]);
         }
     }

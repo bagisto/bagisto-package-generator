@@ -45,11 +45,19 @@ class PackageGenerator
     protected $package;
 
     /**
-     * Package object
-     *
-     * @var string
+     * @var boolean
      */
-    protected $type;
+    protected $plain;
+
+    /**
+     * @var boolean
+     */
+    protected $force;
+
+    /**
+     * @var boolean
+     */
+    protected $type = 'package';
 
     /**
      * Contains subs files information
@@ -57,52 +65,77 @@ class PackageGenerator
      * @var string
      */
     protected $stubFiles = [
-        'views/admin/layouts/style'                  => 'Resources/views/admin/layouts/style.blade.php',
-        'views/admin/index'                          => 'Resources/views/admin/index.blade.php',
-        'views/shop/default/index'                   => 'Resources/views/shop/default/index.blade.php',
-        'views/shop/velocity/index'                  => 'Resources/views/shop/velocity/index.blade.php',
-        'scaffold/admin-menu'                        => 'Config/admin-menu.php',
-        'scaffold/acl'                               => 'Config/acl.php',
-        'assets/js/app'                              => 'Resources/assets/js/app.js',
-        'assets/sass/admin'                          => 'Resources/assets/sass/admin.scss',
-        'assets/sass/default'                        => 'Resources/assets/sass/default.scss',
-        'assets/sass/velocity'                       => 'Resources/assets/sass/velocity.scss',
-        'assets/images/Icon-Temp'                    => 'Resources/assets/images/Icon-Temp.svg',
-        'assets/images/Icon-Temp-Active'             => 'Resources/assets/images/Icon-Temp-Active.svg',
-        'assets/publishable/css/admin'               => '../publishable/assets/css/admin.css',
-        'assets/publishable/css/default'             => '../publishable/assets/css/default.css',
-        'assets/publishable/css/velocity'            => '../publishable/assets/css/velocity.css',
-        'assets/publishable/js/app'                  => '../publishable/assets/js/app.js',
-        'assets/publishable/images/Icon-Temp'        => '../publishable/assets/images/Icon-Temp.svg',
-        'assets/publishable/images/Icon-Temp-Active' => '../publishable/assets/images/Icon-Temp-Active.svg',
-        'webpack'                                    => '../webpack.mix.js',
-        'package'                                    => '../package.json',
+        'package'  => [
+            'views/admin/layouts/style'                  => 'Resources/views/admin/layouts/style.blade.php',
+            'views/admin/index'                          => 'Resources/views/admin/index.blade.php',
+            'views/shop/default/index'                   => 'Resources/views/shop/default/index.blade.php',
+            'views/shop/velocity/index'                  => 'Resources/views/shop/velocity/index.blade.php',
+            'scaffold/admin-menu'                        => 'Config/admin-menu.php',
+            'scaffold/acl'                               => 'Config/acl.php',
+            'assets/js/app'                              => 'Resources/assets/js/app.js',
+            'assets/sass/admin'                          => 'Resources/assets/sass/admin.scss',
+            'assets/sass/default'                        => 'Resources/assets/sass/default.scss',
+            'assets/sass/velocity'                       => 'Resources/assets/sass/velocity.scss',
+            'assets/images/Icon-Temp'                    => 'Resources/assets/images/Icon-Temp.svg',
+            'assets/images/Icon-Temp-Active'             => 'Resources/assets/images/Icon-Temp-Active.svg',
+            'assets/publishable/css/admin'               => '../publishable/assets/css/admin.css',
+            'assets/publishable/css/default'             => '../publishable/assets/css/default.css',
+            'assets/publishable/css/velocity'            => '../publishable/assets/css/velocity.css',
+            'assets/publishable/js/app'                  => '../publishable/assets/js/app.js',
+            'assets/publishable/images/Icon-Temp'        => '../publishable/assets/images/Icon-Temp.svg',
+            'assets/publishable/images/Icon-Temp-Active' => '../publishable/assets/images/Icon-Temp-Active.svg',
+            'webpack'                                    => '../webpack.mix.js',
+            'package'                                    => '../package.json',
+        ],
+
+        'payment'  => [
+            'scaffold/paymentmethods'        => 'Config/paymentmethods.php',
+            'scaffold/payment-method-system' => 'Config/system.php',
+        ],
+
+        'shipping' => [
+            'scaffold/carriers' => 'Config/carriers.php',
+        ]
     ];
 
     /**
      * Contains package file paths for creation
      *
-     * @var string
+     * @var array
      */
     protected $paths = [
-        'config'     => 'Config',
-        'command'    => 'Console/Commands',
-        'migration'  => 'Database/Migrations',
-        'seeder'     => 'Database/Seeders',
-        'contracts'  => 'Contracts',
-        'model'      => 'Models',
-        'routes'     => 'Http',
-        'controller' => 'Http/Controllers',
-        'filter'     => 'Http/Middleware',
-        'request'    => 'Http/Requests',
-        'provider'   => 'Providers',
-        'repository' => 'Repositories',
-        'event'      => 'Events',
-        'listener'   => 'Listeners',
-        'emails'     => 'Mail',
-        'assets'     => 'Resources/assets',
-        'lang'       => 'Resources/lang',
-        'views'      => 'Resources/views',
+        'package'  => [
+            'config'     => 'Config',
+            'command'    => 'Console/Commands',
+            'migration'  => 'Database/Migrations',
+            'seeder'     => 'Database/Seeders',
+            'contracts'  => 'Contracts',
+            'model'      => 'Models',
+            'routes'     => 'Http',
+            'controller' => 'Http/Controllers',
+            'filter'     => 'Http/Middleware',
+            'request'    => 'Http/Requests',
+            'provider'   => 'Providers',
+            'repository' => 'Repositories',
+            'event'      => 'Events',
+            'listener'   => 'Listeners',
+            'emails'     => 'Mail',
+            'assets'     => 'Resources/assets',
+            'lang'       => 'Resources/lang',
+            'views'      => 'Resources/views',
+        ],
+
+        'payment'  => [
+            'config'   => 'Config',
+            'payment'  => 'Payment',
+            'provider' => 'Providers',
+        ],
+
+        'shipping' => [
+            'config'   => 'Config',
+            'carriers' => 'Carriers',
+            'provider' => 'Providers',
+        ]
     ];
 
     /**
@@ -178,6 +211,32 @@ class PackageGenerator
     }
 
     /**
+     * Set type status.
+     *
+     * @param  boolean  $isPaymentPackage
+     * @return \Webkul\PackageGenerator\Generators\PackageGenerator
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Set isShippingPackage status.
+     *
+     * @param  boolean  $isShippingPackage
+     * @return \Webkul\PackageGenerator\Generators\PackageGenerator
+     */
+    public function setIsShippingPackage($isShippingPackage)
+    {
+        $this->isShippingPackage = $isShippingPackage;
+
+        return $this;
+    }
+
+    /**
      * Generate package
      *
      * @return void
@@ -212,7 +271,7 @@ class PackageGenerator
      */
     public function createFolders()
     {
-        foreach ($this->paths as $key => $folder) {
+        foreach ($this->paths[$this->type] as $key => $folder) {
             $path = base_path('packages/' . $this->packageName . '/src') . '/' . $folder;
 
             $this->filesystem->makeDirectory($path, 0755, true);
@@ -228,7 +287,7 @@ class PackageGenerator
     {
         $variables = $this->getStubVariables();
 
-        foreach ($this->stubFiles as $stub => $file) {
+        foreach ($this->stubFiles[$this->type] as $stub => $file) {
             $path = base_path('packages/' . $this->packageName . '/src') . '/' . $file;
 
             if (! $this->filesystem->isDirectory($dir = dirname($path))) {
@@ -248,33 +307,47 @@ class PackageGenerator
      */
     public function createClasses()
     {
-        $this->console->call('package:make-provider', [
-            'name'    => $this->packageName . 'ServiceProvider',
-            'package' => $this->packageName,
-        ]);
+        if ($this->type == 'package') {
+            $this->console->call('package:make-provider', [
+                'name'    => $this->packageName . 'ServiceProvider',
+                'package' => $this->packageName,
+            ]);
 
-        $this->console->call('package:make-module-provider', [
-            'name'    => 'ModuleServiceProvider',
-            'package' => $this->packageName,
-        ]);
+            $this->console->call('package:make-module-provider', [
+                'name'    => 'ModuleServiceProvider',
+                'package' => $this->packageName,
+            ]);
 
-        $this->console->call('package:make-admin-controller', [
-            'name'    => $this->packageName . 'Controller',
-            'package' => $this->packageName
-        ]);
+            $this->console->call('package:make-admin-controller', [
+                'name'    => $this->packageName . 'Controller',
+                'package' => $this->packageName
+            ]);
 
-        $this->console->call('package:make-shop-controller', [
-            'name'    => $this->packageName . 'Controller',
-            'package' => $this->packageName
-        ]);
+            $this->console->call('package:make-shop-controller', [
+                'name'    => $this->packageName . 'Controller',
+                'package' => $this->packageName
+            ]);
 
-        $this->console->call('package:make-admin-route', [
-            'package' => $this->packageName
-        ]);
+            $this->console->call('package:make-admin-route', [
+                'package' => $this->packageName
+            ]);
 
-        $this->console->call('package:make-shop-route', [
-            'package' => $this->packageName
-        ]);
+            $this->console->call('package:make-shop-route', [
+                'package' => $this->packageName
+            ]);
+        } else if ($this->type == 'payment') {
+            $this->console->call('package:make-payment-method-provider', [
+                'name'    => $this->packageName . 'ServiceProvider',
+                'package' => $this->packageName,
+            ]);
+
+            $this->console->call('package:make-payment', [
+                'name'    => $this->packageName,
+                'package' => $this->packageName,
+            ]);
+        } else if ($this->type == 'shipping') {
+            
+        }
     }
 
     /**
@@ -285,7 +358,25 @@ class PackageGenerator
         return [
             'LOWER_NAME'      => $this->getLowerName(),
             'CAPITALIZE_NAME' => $this->getCapitalizeName(),
+            'CLASS'           => $this->getClassNamespace($this->packageName . '/Payment/' . $this->getClassName()),
         ];
+    }
+
+    /**
+     * @return string
+     */
+    protected function getClassName()
+    {
+        return class_basename($this->packageName);
+    }
+
+    /**
+     * @param  string  $name
+     * @return string
+     */
+    protected function getClassNamespace($name)
+    {
+        return str_replace('/', '\\', $name);
     }
 
     /**
