@@ -1,0 +1,13 @@
+<?php
+
+return [
+    '$LOWER_NAME$' => [
+        'code'         => '$LOWER_NAME$',
+        'title'        => '$CAPITALIZE_NAME$',
+        'description'  => '$CAPITALIZE_NAME$',
+        'active'       => true,
+        'default_rate' => '10',
+        'type'         => 'per_unit',
+        'class'        => '$PACKAGE$\Carriers\$CLASS$',
+    ],
+];

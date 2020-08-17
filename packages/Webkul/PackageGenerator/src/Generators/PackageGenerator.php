@@ -94,7 +94,8 @@ class PackageGenerator
         ],
 
         'shipping' => [
-            'scaffold/carriers' => 'Config/carriers.php',
+            'scaffold/carriers'               => 'Config/carriers.php',
+            'scaffold/shipping-method-system' => 'Config/system.php',
         ]
     ];
 
@@ -346,7 +347,15 @@ class PackageGenerator
                 'package' => $this->packageName,
             ]);
         } else if ($this->type == 'shipping') {
-            
+            $this->console->call('package:make-shipping-method-provider', [
+                'name'    => $this->packageName . 'ServiceProvider',
+                'package' => $this->packageName,
+            ]);
+
+            $this->console->call('package:make-shipping', [
+                'name'    => $this->packageName,
+                'package' => $this->packageName,
+            ]);
         }
     }
 
@@ -358,7 +367,8 @@ class PackageGenerator
         return [
             'LOWER_NAME'      => $this->getLowerName(),
             'CAPITALIZE_NAME' => $this->getCapitalizeName(),
-            'CLASS'           => $this->getClassNamespace($this->packageName . '/Payment/' . $this->getClassName()),
+            'PACKAGE'         => $this->getClassNamespace($this->packageName),
+            'CLASS'           => $this->getClassName(),
         ];
     }
 
