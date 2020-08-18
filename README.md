@@ -78,13 +78,13 @@ Below are the list of commands,
 This command will generate all the necessary files which previously you create manually for your package.
 
 ~~~php
-php artisan package:make {package-name}
+php artisan package:make ACME/TestPackage
 ~~~
 
-For e.g., If you want to create a package which named as '**PaymentPackage**', then you need to use the command like this,
+For e.g., If you want to create a package which named as '**TestPackage**', then you need to use the command like this,
 
 ~~~php
-php artisan package:make PaymentPackage
+php artisan package:make ACME/TestPackage
 ~~~
 
 This will create whole directory structure for you automatically so that you don't want to do manually like registering routes, views, etc.
@@ -94,7 +94,7 @@ This will create whole directory structure for you automatically so that you don
 If you want to do things manually only need folder structures, then there is a optional argument known as '**plain**'. Below is the sample,
 
 ~~~php
-php artisan package:make PaymentPackage --plain
+php artisan package:make ACME/TestPackage --plain
 ~~~
 
 ##### New package with force command
@@ -102,5 +102,37 @@ php artisan package:make PaymentPackage --plain
 If somehow folder or package is already present, then simple command won't work. So to overcome this problem we need to use force command.
 
 ~~~php
-php artisan package:make PaymentPackage --force
+php artisan package:make ACME/TestPackage --force
+~~~
+
+#### 2. Create a new admin controller
+
+This command will generate controller for your admin portion.
+
+~~~php
+php artisan package:make-admin-controller AdminTestController ACME/TestPackage
+~~~
+
+##### Create a new admin controller with force command
+
+If controller is already present, then you need to use the force command.
+
+~~~php
+php artisan package:make-admin-controller AdminTestController ACME/TestPackage --force
+~~~
+
+#### 3. Create a new admin routes file
+
+If you want to create an admin route, then you need to use this command and then register your routes file in the service provider i.e. '**ACME\TestPackage\Providers\TestPackageServiceProvider**'.
+
+~~~php
+php artisan package:make-admin-controller AdminTestController ACME/TestPackage
+~~~
+
+##### Create a new admin routes file with force command
+
+If admin routes file already present and you want to override this, then you need to use force command.
+
+~~~php
+php artisan package:make-admin-controller AdminTestController ACME/TestPackage --force
 ~~~
