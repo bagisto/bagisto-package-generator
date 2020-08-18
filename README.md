@@ -41,7 +41,7 @@ After setting up, you will see that there are list of package commands which hel
 
 Below are the list of commands,
 
-| S. No. | Command Name                           | Info                                           |
+| S. No. | Commands                               | Info                                           |
 | :----- | :------------------------------------- | :--------------------------------------------- |
 | 01.    | package:make                           | Create a new package.                          |
 | 02.    | package:make-admin-controller          | Create a new admin controller.                 |
@@ -71,6 +71,36 @@ Below are the list of commands,
 | 26.    | package:make-shop-controller           | Create a new shop controller.                  |
 | 27.    | package:make-shop-route                | Create a new shop route file.                  |
 
-### Let's started with our first command
+### Let's get started with our first command
 
 #### 1. Create a new package
+
+This command will generate all the necessary files which previously you create manually for your package.
+
+~~~php
+php artisan package:make {package-name}
+~~~
+
+For e.g., If you want to create a package which named as '**PaymentPackage**', then you need to use the command like this,
+
+~~~php
+php artisan package:make PaymentPackage
+~~~
+
+This will create whole directory structure for you automatically so that you don't want to do manually like registering routes, views, etc.
+
+##### New package with just directory structure
+
+If you want to do things manually only need folder structures, then there is a optional argument known as '**plain**'. Below is the sample,
+
+~~~php
+php artisan package:make PaymentPackage --plain
+~~~
+
+##### New package with force command
+
+If somehow folder or package is already present, then simple command won't work. So to overcome this problem we need to use force command.
+
+~~~php
+php artisan package:make PaymentPackage --force
+~~~
