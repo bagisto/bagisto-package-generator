@@ -146,3 +146,35 @@ If admin routes file already present and you want to override this, then you nee
 ~~~php
 php artisan package:make-admin-controller AdminTestController ACME/TestPackage --force
 ~~~
+
+#### 4. Create a new command class
+
+This command will create a new command class in the '**src/Console/Commands**' directory.
+
+~~~php
+php artisan package:make-command TestCommand ACME/TestPackage
+~~~
+
+##### Create a new command class with force command
+
+If command class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-command TestCommand ACME/TestPackage --force
+~~~
+
+#### 5. Create a new datagrid class
+
+This command will create data grid class in '**src/Datagrids**' directory.
+
+~~~php
+php artisan package:make-datagrid TestDataGrid ACME/TestPackage
+~~~
+
+##### Create a new datagrid class with force command
+
+If data grid class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-datagrid TestDataGrid ACME/TestPackage --force
+~~~
