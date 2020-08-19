@@ -117,7 +117,7 @@ php artisan package:make ACME/TestPackage --force
 
 #### 2. Create a new admin controller
 
-This command will generate controller for your admin portion.
+This command will generate a new controller for your admin portion.
 
 ~~~php
 php artisan package:make-admin-controller AdminTestController ACME/TestPackage
@@ -165,7 +165,7 @@ php artisan package:make-command TestCommand ACME/TestPackage --force
 
 #### 5. Create a new datagrid class
 
-This command will create data grid class in '**src/Datagrids**' directory.
+This command will create a new data grid class in '**src/Datagrids**' directory.
 
 ~~~php
 php artisan package:make-datagrid TestDataGrid ACME/TestPackage
@@ -177,4 +177,168 @@ If data grid class already present then you can use force command for overwritin
 
 ~~~php
 php artisan package:make-datagrid TestDataGrid ACME/TestPackage --force
+~~~
+
+#### 6. Create a new event class
+
+This command will create a new event class in '**src/Events**' directory.
+
+~~~php
+php artisan package:make-event TestEvent ACME/TestPackage
+~~~
+
+##### Create a new event with force command
+
+If event class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-event TestEvent ACME/TestPackage --force
+~~~
+
+#### 7. Create a new listener class
+
+This command will create a new listener class in '**src/Listeners**' directory.
+
+~~~php
+php artisan package:make-listener TestListener ACME/TestPackage
+~~~
+
+##### Create a new listener class with force command
+
+If listener class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-listener TestListener ACME/TestPackage --force
+~~~
+
+#### 8. Create a new mail class
+
+This command will create a new mail class in '**src/Mail**' directory.
+
+~~~php
+php artisan package:make-mail TestMail ACME/TestPackage
+~~~
+
+##### Create a new mail class with force command
+
+If mail class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-mail TestMail ACME/TestPackage --force
+~~~
+
+#### 9. Create a new middleware class
+
+This command will create a new middleware class in '**src/Http/Middleware**' directory.
+
+~~~php
+php artisan package:make-middleware TestMiddleware ACME/TestPackage
+~~~
+
+##### Create a new middleware class with force command
+
+If middleware class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-middleware TestMiddleware ACME/TestPackage --force
+~~~
+
+#### 10. Create a new migration class
+
+This command will create a new migration class in '**src/Database/Migrations**' directory.
+
+~~~php
+php artisan package:make-migration TestMigration ACME/TestPackage
+~~~
+
+##### Create a new migration with force command
+
+If migration class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-migration TestMigration ACME/TestPackage --force
+~~~
+
+#### 11. Create a new model class
+
+This command will create a following files,
+
+* New model class in '**src/Models**' directory.
+* New model proxy class in '**src/Models**' directory.
+* New model contract in '**src/Contracts**' directory.
+
+~~~php
+php artisan package:make-model TestModel ACME/TestPackage
+~~~
+
+##### Create a new model with force command
+
+If model class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-model TestModel ACME/TestPackage --force
+~~~
+
+#### 12. Create a new model contract
+
+This command will create a new model contract in '**src/Contracts**' directory.
+
+~~~php
+php artisan package:make-model-contract TestContract ACME/TestPackage
+~~~
+
+##### Create a new model contract with force command
+
+If model contract already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-model-contract TestDataGrid ACME/TestPackage --force
+~~~
+
+#### 13. Create a new model proxy class
+
+This command will create a new model proxy class in '**src/Models**' directory.
+
+~~~php
+php artisan package:make-model-proxy TestModelProxy ACME/TestPackage
+~~~
+
+##### Create a new model proxy with force command
+
+If model proxy class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-model-proxy TestModelProxy ACME/TestPackage --force
+~~~
+
+#### 14. Create a new module service provider
+
+This command will create a new module service provider class in '**src/Providers**' directory.
+
+~~~php
+php artisan package:make-module-provider TestServiceProvider ACME/TestPackage
+~~~
+
+##### Create a new module service provider with force command
+
+If module service provider class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-module-provider TestServiceProvider ACME/TestPackage --force
+~~~
+
+#### 15. Create a new notification
+
+This command will create a new notification class in '**src/Notifications**' directory.
+
+~~~php
+php artisan package:make-notification TestNotification ACME/TestPackage
+~~~
+
+##### Create a new notification with force command
+
+If notification class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-notification TestNotification ACME/TestPackage --force
 ~~~
