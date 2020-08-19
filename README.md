@@ -51,35 +51,35 @@ After setting up, you will see that there are list of package commands which hel
 
 Below are the list of commands,
 
-| S. No. | Commands                               | Info                                           | Optional Arguments  |
-| :----- | :------------------------------------- | :--------------------------------------------- | :------------------ |
-| 01.    | package:make                           | Create a new package.                          | --force, --plain    |
-| 02.    | package:make-admin-controller          | Create a new admin controller.                 | --force             |
-| 03.    | package:make-admin-route               | Create a new admin route file.                 | --force             |
-| 04.    | package:make-shop-controller           | Create a new shop controller.                  | --force             |
-| 05.    | package:make-shop-route                | Create a new shop route file.                  | --force             |
-| 06.    | package:make-model                     | Create a new model.                            | --force             |
-| 07.    | package:make-model-contract            | Create a new model contract.                   | --force             |
-| 08.    | package:make-model-proxy               | Create a new model proxy.                      | --force             |
-| 09.    | package:make-migration                 | Create a new migration.                        | --force             |
-| 10.    | package:make-seeder                    | Create a new seeder.                           | --force             |
-| 11.    | package:make-request                   | Create a new request.                          | --force             |
-| 12.    | package:make-middleware                | Create a new middleware.                       | --force             |
-| 13.    | package:make-datagrid                  | Create a new datagrid.                         | --force             |
-| 14.    | package:make-repository                | Create a new repository.                       | --force             |
-| 15.    | package:make-provider                  | Create a new service provider.                 | --force             |
-| 16.    | package:make-event                     | Create a new event.                            | --force             |
-| 17.    | package:make-listener                  | Create a new listener.                         | --force             |
-| 18.    | package:make-notification              | Create a new notification.                     | --force             |
-| 19.    | package:make-mail                      | Create a new mail.                             | --force             |
-| 20.    | package:make-command                   | Create a new command.                          | --force             |
-| 21.    | package:make-payment                   | Create a new payment class.                    | --force             |
-| 22.    | package:make-shipping                  | Create a new shipping class.                   | --force             |
-| 23.    | package:make-module-provider           | Create a new module service provider.          | --force             |
-| 24.    | package:make-payment-method            | Create a new payment method package.           | --force             |
-| 25.    | package:make-payment-method-provider   | Create a new payment method service provider.  | --force             |
-| 26.    | package:make-shipping-method           | Create a new shipping method package.          | --force             |
-| 27.    | package:make-shipping-method-provider  | Create a new shipping method service provider. | --force             |
+| S. No. | Commands                               | Info                                                 | Required Arguments                     | Optional Arguments  |
+| :----- | :------------------------------------- | :--------------------------------------------------- | :------------------------------------- | :------------------ |
+| 01.    | package:make                           | Create a new package.                                |  package-name                          | --force, --plain    |
+| 02.    | package:make-admin-controller          | Create a new admin controller.                       |  controller-name, package-name         | --force             |
+| 03.    | package:make-admin-route               | Create a new admin route file.                       |  package-name                          | --force             |
+| 04.    | package:make-shop-controller           | Create a new shop controller.                        |  controller-name, package-name         | --force             |
+| 05.    | package:make-shop-route                | Create a new shop route file.                        |  package-name                          | --force             |
+| 06.    | package:make-model                     | Create a new model class.                            |  model-name, package-name              | --force             |
+| 07.    | package:make-model-proxy               | Create a new model proxy class.                      |  model-proxy-name, package-name        | --force             |
+| 08.    | package:make-model-contract            | Create a new model contract.                         |  model-contract-name, package-name     | --force             |
+| 09.    | package:make-migration                 | Create a new migration class.                        |  migration-name, package-name          | --force             |
+| 10.    | package:make-seeder                    | Create a new seeder class.                           |  seeder-name, package-name             | --force             |
+| 11.    | package:make-request                   | Create a new request class.                          |  request-name, package-name            | --force             |
+| 12.    | package:make-middleware                | Create a new middleware class.                       |  middleware-name, package-name         | --force             |
+| 13.    | package:make-datagrid                  | Create a new datagrid class.                         |  datagrid-name, package-name           | --force             |
+| 14.    | package:make-repository                | Create a new repository class.                       |  repository-name, package-name         | --force             |
+| 15.    | package:make-provider                  | Create a new service provider class.                 |  provider-name, package-name           | --force             |
+| 16.    | package:make-event                     | Create a new event class.                            |  event-name, package-name              | --force             |
+| 17.    | package:make-listener                  | Create a new listener class.                         |  listener-name, package-name           | --force             |
+| 18.    | package:make-notification              | Create a new notification class.                     |  notification-name, package-name       | --force             |
+| 19.    | package:make-mail                      | Create a new mail class.                             |  mail-name, package-name               | --force             |
+| 20.    | package:make-command                   | Create a new command class.                          |  command-name, package-name            | --force             |
+| 21.    | package:make-payment                   | Create a new payment class.                          |  payment-name, package-name            | --force             |
+| 22.    | package:make-shipping                  | Create a new shipping class.                         |  shipping-name, package-name           | --force             |
+| 23.    | package:make-module-provider           | Create a new module service provider class.          |  provider-name, package-name           | --force             |
+| 24.    | package:make-payment-method            | Create a new payment method package.                 |  payment-package-name                  | --force             |
+| 25.    | package:make-payment-method-provider   | Create a new payment method service provider class.  |  provider-name, payment-package-name   | --force             |
+| 26.    | package:make-shipping-method           | Create a new shipping method package.                |  shipment-package-name                 | --force             |
+| 27.    | package:make-shipping-method-provider  | Create a new shipping method service provider class. |  provider-name, shipment-package-name  | --force             |
 
 **--force** : To overwrite the files
 **--plain** : When you need only directory structure template, files are not included when this argument is passed
@@ -152,119 +152,39 @@ If admin routes file already present and you want to override this, then you nee
 php artisan package:make-admin-controller ACME/TestPackage --force
 ~~~
 
-#### 4. Create a new command class
+#### 4. Create a new shop controller
 
-This command will create a new command class in the '**packages/ACME/TestPackage/src/Console/Commands**' directory.
-
-~~~php
-php artisan package:make-command TestCommand ACME/TestPackage
-~~~
-
-##### Create a new command class with force command
-
-If command class already present then you can use force command for overwriting.
+This command will generate a new controller for your shop portion i.e. '**packages/ACME/TestPackage/src/Http/Controllers/Shop**'.
 
 ~~~php
-php artisan package:make-command TestCommand ACME/TestPackage --force
+php artisan package:make-shop-controller ShopTestController ACME/TestPackage
 ~~~
 
-#### 5. Create a new datagrid class
+##### Create a new shop controller with force command
 
-This command will create a new data grid class in '**packages/ACME/TestPackage/src/Datagrids**' directory.
+If controller is already present, then you need to use the force command.
 
 ~~~php
-php artisan package:make-datagrid TestDataGrid ACME/TestPackage
+php artisan package:make-shop-controller ShopTestController ACME/TestPackage --force
 ~~~
 
-##### Create a new datagrid class with force command
+#### 5. Create a new shop routes file
 
-If data grid class already present then you can use force command for overwriting.
+If you want to create a shop route, then you need to use this command and then register your routes file in the service provider i.e. 'ACME\TestPackage\Providers\TestPackageServiceProvider'.
 
 ~~~php
-php artisan package:make-datagrid TestDataGrid ACME/TestPackage --force
+php artisan package:make-shop-route ACME/TestPackage
 ~~~
 
-#### 6. Create a new event class
+##### Create a new shop routes file with force command
 
-This command will create a new event class in '**packages/ACME/TestPackage/src/Events**' directory.
+If shop routes file already present and you want to override this, then you need to use force command.
 
 ~~~php
-php artisan package:make-event TestEvent ACME/TestPackage
+php artisan package:make-shop-route ACME/TestPackage --force
 ~~~
 
-##### Create a new event with force command
-
-If event class already present then you can use force command for overwriting.
-
-~~~php
-php artisan package:make-event TestEvent ACME/TestPackage --force
-~~~
-
-#### 7. Create a new listener class
-
-This command will create a new listener class in '**packages/ACME/TestPackage/src/Listeners**' directory.
-
-~~~php
-php artisan package:make-listener TestListener ACME/TestPackage
-~~~
-
-##### Create a new listener class with force command
-
-If listener class already present then you can use force command for overwriting.
-
-~~~php
-php artisan package:make-listener TestListener ACME/TestPackage --force
-~~~
-
-#### 8. Create a new mail class
-
-This command will create a new mail class in '**packages/ACME/TestPackage/src/Mail**' directory.
-
-~~~php
-php artisan package:make-mail TestMail ACME/TestPackage
-~~~
-
-##### Create a new mail class with force command
-
-If mail class already present then you can use force command for overwriting.
-
-~~~php
-php artisan package:make-mail TestMail ACME/TestPackage --force
-~~~
-
-#### 9. Create a new middleware class
-
-This command will create a new middleware class in '**packages/ACME/TestPackage/src/Http/Middleware**' directory.
-
-~~~php
-php artisan package:make-middleware TestMiddleware ACME/TestPackage
-~~~
-
-##### Create a new middleware class with force command
-
-If middleware class already present then you can use force command for overwriting.
-
-~~~php
-php artisan package:make-middleware TestMiddleware ACME/TestPackage --force
-~~~
-
-#### 10. Create a new migration class
-
-This command will create a new migration class in '**packages/ACME/TestPackage/src/Database/Migrations**' directory.
-
-~~~php
-php artisan package:make-migration TestMigration ACME/TestPackage
-~~~
-
-##### Create a new migration with force command
-
-If migration class already present then you can use force command for overwriting.
-
-~~~php
-php artisan package:make-migration TestMigration ACME/TestPackage --force
-~~~
-
-#### 11. Create a new model class
+#### 6. Create a new model class
 
 This command will create a following files,
 
@@ -284,23 +204,7 @@ If model class already present then you can use force command for overwriting.
 php artisan package:make-model TestModel ACME/TestPackage --force
 ~~~
 
-#### 12. Create a new model contract
-
-This command will create a new model contract in '**packages/ACME/TestPackage/src/Contracts**' directory.
-
-~~~php
-php artisan package:make-model-contract TestContract ACME/TestPackage
-~~~
-
-##### Create a new model contract with force command
-
-If model contract already present then you can use force command for overwriting.
-
-~~~php
-php artisan package:make-model-contract TestDataGrid ACME/TestPackage --force
-~~~
-
-#### 13. Create a new model proxy class
+#### 7. Create a new model proxy class
 
 This command will create a new model proxy class in '**packages/ACME/TestPackage/src/Models**' directory.
 
@@ -316,135 +220,39 @@ If model proxy class already present then you can use force command for overwrit
 php artisan package:make-model-proxy TestModelProxy ACME/TestPackage --force
 ~~~
 
-#### 14. Create a new module service provider
+#### 8. Create a new model contract
 
-This command will create a new module service provider class in '**packages/ACME/TestPackage/src/Providers**' directory.
-
-~~~php
-php artisan package:make-module-provider TestServiceProvider ACME/TestPackage
-~~~
-
-##### Create a new module service provider with force command
-
-If module service provider class already present then you can use force command for overwriting.
+This command will create a new model contract in '**packages/ACME/TestPackage/src/Contracts**' directory.
 
 ~~~php
-php artisan package:make-module-provider TestServiceProvider ACME/TestPackage --force
+php artisan package:make-model-contract TestContract ACME/TestPackage
 ~~~
 
-#### 15. Create a new notification
+##### Create a new model contract with force command
 
-This command will create a new notification class in '**packages/ACME/TestPackage/src/Notifications**' directory.
+If model contract already present then you can use force command for overwriting.
 
 ~~~php
-php artisan package:make-notification TestNotification ACME/TestPackage
+php artisan package:make-model-contract TestDataGrid ACME/TestPackage --force
 ~~~
 
-##### Create a new notification with force command
+#### 9. Create a new migration class
 
-If notification class already present then you can use force command for overwriting.
+This command will create a new migration class in '**packages/ACME/TestPackage/src/Database/Migrations**' directory.
 
 ~~~php
-php artisan package:make-notification TestNotification ACME/TestPackage --force
+php artisan package:make-migration TestMigration ACME/TestPackage
 ~~~
 
-#### 16. Create a new payment class
+##### Create a new migration with force command
 
-This command will create a new payment class in '**packages/ACME/TestPackage/src/Payment**' directory.
+If migration class already present then you can use force command for overwriting.
 
 ~~~php
-php artisan package:make-payment TestPayment ACME/TestPackage
+php artisan package:make-migration TestMigration ACME/TestPackage --force
 ~~~
 
-##### Create a new payment with force command
-
-If payment class already present then you can use force command for overwriting.
-
-~~~php
-php artisan package:make-payment TestPayment ACME/TestPackage --force
-~~~
-
-#### 17. Create a new payment method
-
-This command will create a whole new payment package for you in  '**packages/ACME/Stripe**' directory.
-
-~~~php
-php artisan package:make-payment-method ACME/Stripe
-~~~
-
-##### Create a new payment method with force command
-
-This command will overwrite whole directory structure.
-
-~~~php
-php artisan package:make-payment-method ACME/Stripe --force
-~~~
-
-#### 18. Create a new payment method service provider
-
-This command will create a new payment method service provider class in '**packages/ACME/Stripe/src/Providers**' directory.
-
-~~~php
-php artisan package:make-payment-method-provider TestPaymentMethodServiceProvider ACME/Stripe
-~~~
-
-##### Create a new payment method service provider with force command
-
-If payment method service provider class already present then you can use force command for overwriting.
-
-~~~php
-php artisan package:make-payment-method-provider TestPaymentMethodServiceProvider ACME/Stripe --force
-~~~
-
-#### 19. Create a new service provider
-
-This command will create a new service provider class in '**packages/ACME/TestPackage/src/Providers**' directory.
-
-~~~php
-php artisan package:make-provider TestServiceProvider ACME/TestPackage
-~~~
-
-##### Create a new service provider with force command
-
-If service provider class already present then you can use force command for overwriting.
-
-~~~php
-php artisan package:make-provider TestServiceProvider ACME/TestPackage --force
-~~~
-
-#### 20. Create a new repository
-
-This command will create a new repository class in '**packages/ACME/TestPackage/src/Repositories**' directory.
-
-~~~php
-php artisan package:make-repository TestRepository ACME/TestPackage
-~~~
-
-##### Create a new repository with force command
-
-If repository class already present then you can use force command for overwriting.
-
-~~~php
-php artisan package:make-repository TestRepository ACME/TestPackage --force
-~~~
-
-#### 21. Create a new request class
-
-This command will create a new request class in '**packages/ACME/TestPackage/src/Http/Requests**' directory.
-
-~~~php
-php artisan package:make-request TestRequest ACME/TestPackage
-~~~
-
-##### Create a new request class with force command
-
-If request class already present then you can use force command for overwriting.
-
-~~~php
-php artisan package:make-request TestRequest ACME/TestPackage --force
-~~~
-
-#### 22. Create a new seeder class
+#### 10. Create a new seeder class
 
 This command will create a new seeder class in '**packages/ACME/TestPackage/src/Database/Seeders**' directory.
 
@@ -460,7 +268,183 @@ If seeder class already present then you can use force command for overwriting.
 php artisan package:make-seeder TestSeeder ACME/TestPackage --force
 ~~~
 
-#### 23. Create a new shipping class
+#### 11. Create a new request class
+
+This command will create a new request class in '**packages/ACME/TestPackage/src/Http/Requests**' directory.
+
+~~~php
+php artisan package:make-request TestRequest ACME/TestPackage
+~~~
+
+##### Create a new request class with force command
+
+If request class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-request TestRequest ACME/TestPackage --force
+~~~
+
+#### 12. Create a new middleware class
+
+This command will create a new middleware class in '**packages/ACME/TestPackage/src/Http/Middleware**' directory.
+
+~~~php
+php artisan package:make-middleware TestMiddleware ACME/TestPackage
+~~~
+
+##### Create a new middleware class with force command
+
+If middleware class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-middleware TestMiddleware ACME/TestPackage --force
+~~~
+
+#### 13. Create a new datagrid class
+
+This command will create a new data grid class in '**packages/ACME/TestPackage/src/Datagrids**' directory.
+
+~~~php
+php artisan package:make-datagrid TestDataGrid ACME/TestPackage
+~~~
+
+##### Create a new datagrid class with force command
+
+If data grid class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-datagrid TestDataGrid ACME/TestPackage --force
+~~~
+
+#### 14. Create a new repository class
+
+This command will create a new repository class in '**packages/ACME/TestPackage/src/Repositories**' directory.
+
+~~~php
+php artisan package:make-repository TestRepository ACME/TestPackage
+~~~
+
+##### Create a new repository with force command
+
+If repository class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-repository TestRepository ACME/TestPackage --force
+~~~
+
+#### 15. Create a new service provider class
+
+This command will create a new service provider class in '**packages/ACME/TestPackage/src/Providers**' directory.
+
+~~~php
+php artisan package:make-provider TestServiceProvider ACME/TestPackage
+~~~
+
+##### Create a new service provider with force command
+
+If service provider class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-provider TestServiceProvider ACME/TestPackage --force
+~~~
+
+#### 16. Create a new event class
+
+This command will create a new event class in '**packages/ACME/TestPackage/src/Events**' directory.
+
+~~~php
+php artisan package:make-event TestEvent ACME/TestPackage
+~~~
+
+##### Create a new event with force command
+
+If event class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-event TestEvent ACME/TestPackage --force
+~~~
+
+#### 17. Create a new listener class
+
+This command will create a new listener class in '**packages/ACME/TestPackage/src/Listeners**' directory.
+
+~~~php
+php artisan package:make-listener TestListener ACME/TestPackage
+~~~
+
+##### Create a new listener class with force command
+
+If listener class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-listener TestListener ACME/TestPackage --force
+~~~
+
+#### 18. Create a new notification class
+
+This command will create a new notification class in '**packages/ACME/TestPackage/src/Notifications**' directory.
+
+~~~php
+php artisan package:make-notification TestNotification ACME/TestPackage
+~~~
+
+##### Create a new notification with force command
+
+If notification class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-notification TestNotification ACME/TestPackage --force
+~~~
+
+#### 19. Create a new mail class
+
+This command will create a new mail class in '**packages/ACME/TestPackage/src/Mail**' directory.
+
+~~~php
+php artisan package:make-mail TestMail ACME/TestPackage
+~~~
+
+##### Create a new mail class with force command
+
+If mail class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-mail TestMail ACME/TestPackage --force
+~~~
+
+#### 20. Create a new command class
+
+This command will create a new command class in the '**packages/ACME/TestPackage/src/Console/Commands**' directory.
+
+~~~php
+php artisan package:make-command TestCommand ACME/TestPackage
+~~~
+
+##### Create a new command class with force command
+
+If command class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-command TestCommand ACME/TestPackage --force
+~~~
+
+#### 21. Create a new payment class
+
+This command will create a new payment class in '**packages/ACME/TestPackage/src/Payment**' directory.
+
+~~~php
+php artisan package:make-payment TestPayment ACME/TestPackage
+~~~
+
+##### Create a new payment with force command
+
+If payment class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-payment TestPayment ACME/TestPackage --force
+~~~
+
+#### 22. Create a new shipping class
 
 This command will create a new shipping class in '**packages/ACME/TestPackage/src/Carriers**' directory.
 
@@ -476,7 +460,55 @@ If shipping class already present then you can use force command for overwriting
 php artisan package:make-shipping TestShipping ACME/TestPackage --force
 ~~~
 
-#### 24. Create a new shipping method
+#### 23. Create a new module service provider class
+
+This command will create a new module service provider class in '**packages/ACME/TestPackage/src/Providers**' directory.
+
+~~~php
+php artisan package:make-module-provider TestServiceProvider ACME/TestPackage
+~~~
+
+##### Create a new module service provider with force command
+
+If module service provider class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-module-provider TestServiceProvider ACME/TestPackage --force
+~~~
+
+#### 24. Create a new payment method package
+
+This command will create a whole new payment package for you in  '**packages/ACME/Stripe**' directory.
+
+~~~php
+php artisan package:make-payment-method ACME/Stripe
+~~~
+
+##### Create a new payment method with force command
+
+This command will overwrite whole directory structure.
+
+~~~php
+php artisan package:make-payment-method ACME/Stripe --force
+~~~
+
+#### 25. Create a new payment method service provider
+
+This command will create a new payment method service provider class in '**packages/ACME/Stripe/src/Providers**' directory.
+
+~~~php
+php artisan package:make-payment-method-provider TestPaymentMethodServiceProvider ACME/Stripe
+~~~
+
+##### Create a new payment method service provider with force command
+
+If payment method service provider class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-payment-method-provider TestPaymentMethodServiceProvider ACME/Stripe --force
+~~~
+
+#### 26. Create a new shipping method package
 
 This command will create a whole new shipment package in '**packages/ACME/FedEx**' directory.
 
@@ -492,7 +524,7 @@ This command will override whole directory structure.
 php artisan package:make-shipping-method ACME/FedEx --force
 ~~~
 
-#### 25. Create a new shipping method service provider
+#### 27. Create a new shipping method service provider
 
 This command will create a new shipping method service provider class '**packages/ACME/FedEx/src/Providers**' directory.
 
@@ -506,36 +538,4 @@ If shipping method service provider class already present then you can use force
 
 ~~~php
 php artisan package:make-shipping-method-provider TestShippingMethodServiceProvider ACME/FedEx --force
-~~~
-
-#### 26. Create a new shop controller
-
-This command will generate a new controller for your shop portion i.e. '**packages/ACME/TestPackage/src/Http/Controllers/Shop**'.
-
-~~~php
-php artisan package:make-shop-controller ShopTestController ACME/TestPackage
-~~~
-
-##### Create a new shop controller with force command
-
-If controller is already present, then you need to use the force command.
-
-~~~php
-php artisan package:make-shop-controller ShopTestController ACME/TestPackage --force
-~~~
-
-#### 27. Create a new shop routes file
-
-If you want to create a shop route, then you need to use this command and then register your routes file in the service provider i.e. 'ACME\TestPackage\Providers\TestPackageServiceProvider'.
-
-~~~php
-php artisan package:make-shop-route ACME/TestPackage
-~~~
-
-##### Create a new shop routes file with force command
-
-If shop routes file already present and you want to override this, then you need to use force command.
-
-~~~php
-php artisan package:make-shop-route ACME/TestPackage --force
 ~~~
