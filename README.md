@@ -136,7 +136,7 @@ php artisan package:make-admin-controller AdminTestController ACME/TestPackage -
 If you want to create an admin route, then you need to use this command and then register your routes file in the service provider i.e. '**ACME\TestPackage\Providers\TestPackageServiceProvider**'.
 
 ~~~php
-php artisan package:make-admin-controller AdminTestController ACME/TestPackage
+php artisan package:make-admin-controller ACME/TestPackage
 ~~~
 
 ##### Create a new admin routes file with force command
@@ -144,7 +144,7 @@ php artisan package:make-admin-controller AdminTestController ACME/TestPackage
 If admin routes file already present and you want to override this, then you need to use force command.
 
 ~~~php
-php artisan package:make-admin-controller AdminTestController ACME/TestPackage --force
+php artisan package:make-admin-controller ACME/TestPackage --force
 ~~~
 
 #### 4. Create a new command class
@@ -421,4 +421,116 @@ If repository class already present then you can use force command for overwriti
 
 ~~~php
 php artisan package:make-repository TestRepository ACME/TestPackage --force
+~~~
+
+#### 21. Create a new request class
+
+This command will create a new request class in '**packages/ACME/TestPackage/src/Http/Requests**' directory.
+
+~~~php
+php artisan package:make-request TestRequest ACME/TestPackage
+~~~
+
+##### Create a new request class with force command
+
+If request class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-request TestRequest ACME/TestPackage --force
+~~~
+
+#### 22. Create a new seeder class
+
+This command will create a new seeder class in '**packages/ACME/TestPackage/src/Database/Seeders**' directory.
+
+~~~php
+php artisan package:make-seeder TestSeeder ACME/TestPackage
+~~~
+
+##### Create a new seeder class with force command
+
+If seeder class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-seeder TestSeeder ACME/TestPackage --force
+~~~
+
+#### 23. Create a new shipping class
+
+This command will create a new shipping class in '**packages/ACME/TestPackage/src/Carriers**' directory.
+
+~~~php
+php artisan package:make-shipping TestShipping ACME/TestPackage
+~~~
+
+##### Create a new shipping class with force command
+
+If shipping class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-shipping TestShipping ACME/TestPackage --force
+~~~
+
+#### 24. Create a new shipping method
+
+This command will create a whole new shipment package in '**packages/ACME/FedEx**' directory.
+
+~~~php
+php artisan package:make-shipping-method ACME/FedEx
+~~~
+
+##### Create a new shipping method with force command
+
+This command will override whole directory structure.
+
+~~~php
+php artisan package:make-shipping-method ACME/FedEx --force
+~~~
+
+#### 25. Create a new shipping method service provider
+
+This command will create a new shipping method service provider class '**packages/ACME/FedEx/src/Providers**' directory.
+
+~~~php
+php artisan package:make-shipping-method-provider TestShippingMethodServiceProvider ACME/FedEx
+~~~
+
+##### Create a new shipping method service provider with force command
+
+If shipping method service provider class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-shipping-method-provider TestShippingMethodServiceProvider ACME/FedEx --force
+~~~
+
+#### 26. Create a new shop controller
+
+This command will generate a new controller for your shop portion i.e. '**packages/ACME/TestPackage/src/Http/Controllers/Shop**'.
+
+~~~php
+php artisan package:make-shop-controller ShopTestController ACME/TestPackage
+~~~
+
+##### Create a new shop controller with force command
+
+If controller is already present, then you need to use the force command.
+
+~~~php
+php artisan package:make-shop-controller ShopTestController ACME/TestPackage --force
+~~~
+
+#### 27. Create a new shop routes file
+
+If you want to create a shop route, then you need to use this command and then register your routes file in the service provider i.e. 'ACME\TestPackage\Providers\TestPackageServiceProvider'.
+
+~~~php
+php artisan package:make-shop-route ACME/TestPackage
+~~~
+
+##### Create a new shop routes file with force command
+
+If shop routes file already present and you want to override this, then you need to use force command.
+
+~~~php
+php artisan package:make-shop-route ACME/TestPackage --force
 ~~~
