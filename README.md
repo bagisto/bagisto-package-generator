@@ -26,41 +26,42 @@ composer require bagisto/bagisto-package-generator
 
 ## 4. Summary
 
-After setting up, you will see that there are list of package commands which help you to make your package creation smooth and flawless.
+After setting up, you will see that there are list of package commands which help you to make your package creation smooth.
 
 Below are the list of commands,
 
-| S. No. | Commands                               | Info                                                 | Required Arguments                     | Optional Arguments  |
-| :----- | :------------------------------------- | :--------------------------------------------------- | :------------------------------------- | :------------------ |
-| 01.    | package:make                           | Create a new package.                                |  package-name                          | --force, --plain    |
-| 02.    | package:make-admin-controller          | Create a new admin controller.                       |  controller-name, package-name         | --force             |
-| 03.    | package:make-admin-route               | Create a new admin route file.                       |  package-name                          | --force             |
-| 04.    | package:make-shop-controller           | Create a new shop controller.                        |  controller-name, package-name         | --force             |
-| 05.    | package:make-shop-route                | Create a new shop route file.                        |  package-name                          | --force             |
-| 06.    | package:make-model                     | Create a new model class.                            |  model-name, package-name              | --force             |
-| 07.    | package:make-model-proxy               | Create a new model proxy class.                      |  model-proxy-name, package-name        | --force             |
-| 08.    | package:make-model-contract            | Create a new model contract.                         |  model-contract-name, package-name     | --force             |
-| 09.    | package:make-migration                 | Create a new migration class.                        |  migration-name, package-name          | --force             |
-| 10.    | package:make-seeder                    | Create a new seeder class.                           |  seeder-name, package-name             | --force             |
-| 11.    | package:make-request                   | Create a new request class.                          |  request-name, package-name            | --force             |
-| 12.    | package:make-middleware                | Create a new middleware class.                       |  middleware-name, package-name         | --force             |
-| 13.    | package:make-datagrid                  | Create a new datagrid class.                         |  datagrid-name, package-name           | --force             |
-| 14.    | package:make-repository                | Create a new repository class.                       |  repository-name, package-name         | --force             |
-| 15.    | package:make-provider                  | Create a new service provider class.                 |  provider-name, package-name           | --force             |
-| 16.    | package:make-event                     | Create a new event class.                            |  event-name, package-name              | --force             |
-| 17.    | package:make-listener                  | Create a new listener class.                         |  listener-name, package-name           | --force             |
-| 18.    | package:make-notification              | Create a new notification class.                     |  notification-name, package-name       | --force             |
-| 19.    | package:make-mail                      | Create a new mail class.                             |  mail-name, package-name               | --force             |
-| 20.    | package:make-command                   | Create a new command class.                          |  command-name, package-name            | --force             |
-| 21.    | package:make-payment                   | Create a new payment class.                          |  payment-name, package-name            | --force             |
-| 22.    | package:make-shipping                  | Create a new shipping class.                         |  shipping-name, package-name           | --force             |
-| 23.    | package:make-module-provider           | Create a new module service provider class.          |  provider-name, package-name           | --force             |
-| 24.    | package:make-payment-method            | Create a new payment method package.                 |  payment-package-name                  | --force             |
-| 25.    | package:make-payment-method-provider   | Create a new payment method service provider class.  |  provider-name, payment-package-name   | --force             |
-| 26.    | package:make-shipping-method           | Create a new shipping method package.                |  shipment-package-name                 | --force             |
-| 27.    | package:make-shipping-method-provider  | Create a new shipping method service provider class. |  provider-name, shipment-package-name  | --force             |
+| S. No. | Commands                               | Info                                                                                                            | Required Arguments                     | Optional Arguments  |
+| :----- | :------------------------------------- | :-------------------------------------------------------------------------------------------------------------- | :------------------------------------- | :------------------ |
+| 01.    | package:make                           | [Create a new package.](#1-create-a-new-package)                                                                |  package-name                          | --force, --plain    |
+| 02.    | package:make-admin-controller          | [Create a new admin controller.](#2-create-a-new-admin-controller)                                              |  controller-name, package-name         | --force             |
+| 03.    | package:make-admin-route               | [Create a new admin routes file.](#3-create-a-new-admin-routes-file)                                            |  package-name                          | --force             |
+| 04.    | package:make-shop-controller           | [Create a new shop controller.](#4-create-a-new-shop-controller)                                                |  controller-name, package-name         | --force             |
+| 05.    | package:make-shop-route                | [Create a new shop routes file.](#5-create-a-new-shop-routes-file)                                              |  package-name                          | --force             |
+| 06.    | package:make-model                     | [Create a new model class.](#6-create-a-new-model-class)                                                        |  model-name, package-name              | --force             |
+| 07.    | package:make-model-proxy               | [Create a new model proxy class.](#7-create-a-new-model-proxy-class)                                            |  model-proxy-name, package-name        | --force             |
+| 08.    | package:make-model-contract            | [Create a new model contract.](#8-create-a-new-model-contract)                                                  |  model-contract-name, package-name     | --force             |
+| 09.    | package:make-migration                 | [Create a new migration class.](#9-create-a-new-migration-class)                                                |  migration-name, package-name          |                     |
+| 10.    | package:make-seeder                    | [Create a new seeder class.](#10-create-a-new-seeder-class)                                                     |  seeder-name, package-name             | --force             |
+| 11.    | package:make-request                   | [Create a new request class.](#11-create-a-new-request-class)                                                   |  request-name, package-name            | --force             |
+| 12.    | package:make-middleware                | [Create a new middleware class.](#12-create-a-new-middleware-class)                                             |  middleware-name, package-name         | --force             |
+| 13.    | package:make-datagrid                  | [Create a new datagrid class.](#13-create-a-new-datagrid-class)                                                 |  datagrid-name, package-name           | --force             |
+| 14.    | package:make-repository                | [Create a new repository class.](#14-create-a-new-repository-class)                                             |  repository-name, package-name         | --force             |
+| 15.    | package:make-provider                  | [Create a new service provider class.](#15-create-a-new-service-provider-class)                                 |  provider-name, package-name           | --force             |
+| 16.    | package:make-event                     | [Create a new event class.](#16-create-a-new-event-class)                                                       |  event-name, package-name              | --force             |
+| 17.    | package:make-listener                  | [Create a new listener class.](#17-create-a-new-listener-class)                                                 |  listener-name, package-name           | --force             |
+| 18.    | package:make-notification              | [Create a new notification class.](#18-create-a-new-notification-class)                                         |  notification-name, package-name       | --force             |
+| 19.    | package:make-mail                      | [Create a new mail class.](#19-create-a-new-mail-class)                                                         |  mail-name, package-name               | --force             |
+| 20.    | package:make-command                   | [Create a new command class.](#20-create-a-new-command-class)                                                   |  command-name, package-name            | --force             |
+| 21.    | package:make-payment                   | [Create a new payment class.](#21-create-a-new-payment-class)                                                   |  payment-name, package-name            | --force             |
+| 22.    | package:make-shipping                  | [Create a new shipping class.](#22-create-a-new-shipping-class)                                                 |  shipping-name, package-name           | --force             |
+| 23.    | package:make-module-provider           | [Create a new module service provider class.](#23-create-a-new-module-service-provider-class)                   |  provider-name, package-name           | --force             |
+| 24.    | package:make-payment-method            | [Create a new payment method package.](#24-create-a-new-payment-method-package)                                 |  payment-package-name                  | --force             |
+| 25.    | package:make-payment-method-provider   | [Create a new payment method service provider class.](#25-create-a-new-payment-method-service-provider-class)   |  provider-name, payment-package-name   | --force             |
+| 26.    | package:make-shipping-method           | [Create a new shipping method package.](#26-create-a-new-shipping-method-package)                               |  shipment-package-name                 | --force             |
+| 27.    | package:make-shipping-method-provider  | [Create a new shipping method service provider class.](#27-create-a-new-shipping-method-service-provider-class) |  provider-name, shipment-package-name  | --force             |
 
 **--force** : To overwrite the files
+
 **--plain** : When you need only directory structure template, files are not included when this argument is passed
 
 ## 5. Usage
@@ -177,7 +178,7 @@ php artisan package:make-model TestModel ACME/TestPackage
 
 ##### Create a new model with force command
 
-If model class already present then you can use force command for overwriting.
+This command will overwrite all three files.
 
 ~~~php
 php artisan package:make-model TestModel ACME/TestPackage --force
@@ -221,14 +222,6 @@ This command will create a new migration class in '**packages/ACME/TestPackage/s
 
 ~~~php
 php artisan package:make-migration TestMigration ACME/TestPackage
-~~~
-
-##### Create a new migration with force command
-
-If migration class already present then you can use force command for overwriting.
-
-~~~php
-php artisan package:make-migration TestMigration ACME/TestPackage --force
 ~~~
 
 #### 10. Create a new seeder class
@@ -471,7 +464,7 @@ This command will overwrite whole directory structure.
 php artisan package:make-payment-method ACME/Stripe --force
 ~~~
 
-#### 25. Create a new payment method service provider
+#### 25. Create a new payment method service provider class
 
 This command will create a new payment method service provider class in '**packages/ACME/Stripe/src/Providers**' directory.
 
@@ -479,7 +472,7 @@ This command will create a new payment method service provider class in '**packa
 php artisan package:make-payment-method-provider TestPaymentMethodServiceProvider ACME/Stripe
 ~~~
 
-##### Create a new payment method service provider with force command
+##### Create a new payment method service provider class with force command
 
 If payment method service provider class already present then you can use force command for overwriting.
 
@@ -503,7 +496,7 @@ This command will override whole directory structure.
 php artisan package:make-shipping-method ACME/FedEx --force
 ~~~
 
-#### 27. Create a new shipping method service provider
+#### 27. Create a new shipping method service provider class
 
 This command will create a new shipping method service provider class '**packages/ACME/FedEx/src/Providers**' directory.
 
