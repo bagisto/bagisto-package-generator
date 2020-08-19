@@ -149,7 +149,7 @@ php artisan package:make-admin-controller AdminTestController ACME/TestPackage -
 
 #### 4. Create a new command class
 
-This command will create a new command class in the '**src/Console/Commands**' directory.
+This command will create a new command class in the '**packages/ACME/TestPackage/src/Console/Commands**' directory.
 
 ~~~php
 php artisan package:make-command TestCommand ACME/TestPackage
@@ -165,7 +165,7 @@ php artisan package:make-command TestCommand ACME/TestPackage --force
 
 #### 5. Create a new datagrid class
 
-This command will create a new data grid class in '**src/Datagrids**' directory.
+This command will create a new data grid class in '**packages/ACME/TestPackage/src/Datagrids**' directory.
 
 ~~~php
 php artisan package:make-datagrid TestDataGrid ACME/TestPackage
@@ -181,7 +181,7 @@ php artisan package:make-datagrid TestDataGrid ACME/TestPackage --force
 
 #### 6. Create a new event class
 
-This command will create a new event class in '**src/Events**' directory.
+This command will create a new event class in '**packages/ACME/TestPackage/src/Events**' directory.
 
 ~~~php
 php artisan package:make-event TestEvent ACME/TestPackage
@@ -197,7 +197,7 @@ php artisan package:make-event TestEvent ACME/TestPackage --force
 
 #### 7. Create a new listener class
 
-This command will create a new listener class in '**src/Listeners**' directory.
+This command will create a new listener class in '**packages/ACME/TestPackage/src/Listeners**' directory.
 
 ~~~php
 php artisan package:make-listener TestListener ACME/TestPackage
@@ -213,7 +213,7 @@ php artisan package:make-listener TestListener ACME/TestPackage --force
 
 #### 8. Create a new mail class
 
-This command will create a new mail class in '**src/Mail**' directory.
+This command will create a new mail class in '**packages/ACME/TestPackage/src/Mail**' directory.
 
 ~~~php
 php artisan package:make-mail TestMail ACME/TestPackage
@@ -229,7 +229,7 @@ php artisan package:make-mail TestMail ACME/TestPackage --force
 
 #### 9. Create a new middleware class
 
-This command will create a new middleware class in '**src/Http/Middleware**' directory.
+This command will create a new middleware class in '**packages/ACME/TestPackage/src/Http/Middleware**' directory.
 
 ~~~php
 php artisan package:make-middleware TestMiddleware ACME/TestPackage
@@ -245,7 +245,7 @@ php artisan package:make-middleware TestMiddleware ACME/TestPackage --force
 
 #### 10. Create a new migration class
 
-This command will create a new migration class in '**src/Database/Migrations**' directory.
+This command will create a new migration class in '**packages/ACME/TestPackage/src/Database/Migrations**' directory.
 
 ~~~php
 php artisan package:make-migration TestMigration ACME/TestPackage
@@ -263,9 +263,9 @@ php artisan package:make-migration TestMigration ACME/TestPackage --force
 
 This command will create a following files,
 
-* New model class in '**src/Models**' directory.
-* New model proxy class in '**src/Models**' directory.
-* New model contract in '**src/Contracts**' directory.
+* New model class in '**packages/ACME/TestPackage/src/Models**' directory.
+* New model proxy class in '**packages/ACME/TestPackage/src/Models**' directory.
+* New model contract in '**packages/ACME/TestPackage/src/Contracts**' directory.
 
 ~~~php
 php artisan package:make-model TestModel ACME/TestPackage
@@ -281,7 +281,7 @@ php artisan package:make-model TestModel ACME/TestPackage --force
 
 #### 12. Create a new model contract
 
-This command will create a new model contract in '**src/Contracts**' directory.
+This command will create a new model contract in '**packages/ACME/TestPackage/src/Contracts**' directory.
 
 ~~~php
 php artisan package:make-model-contract TestContract ACME/TestPackage
@@ -297,7 +297,7 @@ php artisan package:make-model-contract TestDataGrid ACME/TestPackage --force
 
 #### 13. Create a new model proxy class
 
-This command will create a new model proxy class in '**src/Models**' directory.
+This command will create a new model proxy class in '**packages/ACME/TestPackage/src/Models**' directory.
 
 ~~~php
 php artisan package:make-model-proxy TestModelProxy ACME/TestPackage
@@ -313,7 +313,7 @@ php artisan package:make-model-proxy TestModelProxy ACME/TestPackage --force
 
 #### 14. Create a new module service provider
 
-This command will create a new module service provider class in '**src/Providers**' directory.
+This command will create a new module service provider class in '**packages/ACME/TestPackage/src/Providers**' directory.
 
 ~~~php
 php artisan package:make-module-provider TestServiceProvider ACME/TestPackage
@@ -329,7 +329,7 @@ php artisan package:make-module-provider TestServiceProvider ACME/TestPackage --
 
 #### 15. Create a new notification
 
-This command will create a new notification class in '**src/Notifications**' directory.
+This command will create a new notification class in '**packages/ACME/TestPackage/src/Notifications**' directory.
 
 ~~~php
 php artisan package:make-notification TestNotification ACME/TestPackage
@@ -341,4 +341,84 @@ If notification class already present then you can use force command for overwri
 
 ~~~php
 php artisan package:make-notification TestNotification ACME/TestPackage --force
+~~~
+
+#### 16. Create a new payment class
+
+This command will create a new payment class in '**packages/ACME/TestPackage/src/Payment**' directory.
+
+~~~php
+php artisan package:make-payment TestPayment ACME/TestPackage
+~~~
+
+##### Create a new payment with force command
+
+If payment class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-payment TestPayment ACME/TestPackage --force
+~~~
+
+#### 17. Create a new payment method
+
+This command will create a whole new payment package for you in  '**packages/ACME/Stripe**' directory.
+
+~~~php
+php artisan package:make-payment-method ACME/Stripe
+~~~
+
+##### Create a new payment method with force command
+
+This command will overwrite whole directory structure.
+
+~~~php
+php artisan package:make-payment-method ACME/Stripe --force
+~~~
+
+#### 18. Create a new payment method service provider
+
+This command will create a new payment method service provider class in '**packages/ACME/Stripe/src/Providers**' directory.
+
+~~~php
+php artisan package:make-payment-method-provider TestPaymentMethodServiceProvider ACME/Stripe
+~~~
+
+##### Create a new payment method service provider with force command
+
+If payment method service provider class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-payment-method-provider TestPaymentMethodServiceProvider ACME/Stripe --force
+~~~
+
+#### 19. Create a new service provider
+
+This command will create a new service provider class in '**packages/ACME/TestPackage/src/Providers**' directory.
+
+~~~php
+php artisan package:make-provider TestServiceProvider ACME/TestPackage
+~~~
+
+##### Create a new service provider with force command
+
+If service provider class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-provider TestServiceProvider ACME/TestPackage --force
+~~~
+
+#### 20. Create a new repository
+
+This command will create a new repository class in '**packages/ACME/TestPackage/src/Repositories**' directory.
+
+~~~php
+php artisan package:make-repository TestRepository ACME/TestPackage
+~~~
+
+##### Create a new repository with force command
+
+If repository class already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-repository TestRepository ACME/TestPackage --force
 ~~~
