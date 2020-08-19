@@ -22,27 +22,6 @@ Go to the root folder of **Bagisto** and run the following command
 composer require bagisto/bagisto-package-generator
 ~~~
 
-### Install without composer
-
-* Unzip the respective extension zip and then merge "packages" folder into project root directory.
-* Goto config/app.php file and add following line under 'providers'
-
-~~~php
-Webkul\PackageGenerator\Providers\PackageGeneratorServiceProvider::class
-~~~
-
-* Goto composer.json file and add following line under 'psr-4'
-
-~~~json
-"Webkul\\PackageGenerator\\": "packages/Webkul/PackageGenerator"
-~~~
-
-* Run these commands below to complete the setup
-
-~~~php
-composer dump-autoload
-~~~
-
 > That's it, now just execute the project on your specified domain.
 
 ## 4. Summary
