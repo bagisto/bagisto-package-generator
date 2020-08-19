@@ -28,11 +28,13 @@ class ModelMakeCommand extends MakeCommand
         $this->call('package:make-model-proxy', [
             'name'    => $this->argument('name') . 'Proxy',
             'package' => $this->argument('package'),
+            '--force' => $this->option('force'),
         ]);
 
         $this->call('package:make-model-contract', [
             'name'    => $this->argument('name'),
             'package' => $this->argument('package'),
+            '--force' => $this->option('force'),
         ]);
     }
 
