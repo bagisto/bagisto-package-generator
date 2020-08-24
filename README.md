@@ -121,7 +121,7 @@ php artisan package:make-admin-controller AdminTestController ACME/TestPackage -
 If you want to create an admin route, then you need to use this command and then register your routes file in the service provider i.e. '**ACME\TestPackage\Providers\TestPackageServiceProvider**'.
 
 ~~~php
-php artisan package:make-admin-controller ACME/TestPackage
+php artisan package:make-admin-route ACME/TestPackage
 ~~~
 
 ##### Create a new admin routes file with force command
@@ -129,7 +129,7 @@ php artisan package:make-admin-controller ACME/TestPackage
 If admin routes file already present and you want to override this, then you need to use force command.
 
 ~~~php
-php artisan package:make-admin-controller ACME/TestPackage --force
+php artisan package:make-admin-route ACME/TestPackage --force
 ~~~
 
 #### 4. Create a new shop controller
