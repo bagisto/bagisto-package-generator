@@ -34,7 +34,7 @@ class RepositoryMakeCommand extends MakeCommand
         return [
             'NAMESPACE'      => $this->getClassNamespace($this->argument('package') . '/Repositories'),
             'CLASS'          => $this->getClassName(),
-            'CONTRACT_CLASS' => $this->argument('package') . '/Contracts/' . $this->getContractName(),
+            'CONTRACT_CLASS' => $this->getClassNamespace($this->argument('package') . '/Contracts/' . $this->getContractName()),
         ];
     }
 
