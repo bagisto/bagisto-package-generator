@@ -59,7 +59,7 @@ Below are the list of commands,
 | 25.    | package:make-payment-method-provider   | [Create a new payment method service provider class.](#25-create-a-new-payment-method-service-provider-class)   |  provider-name, payment-package-name   | --force             |
 | 26.    | package:make-shipping-method           | [Create a new shipping method package.](#26-create-a-new-shipping-method-package)                               |  shipment-package-name                 | --force             |
 | 27.    | package:make-shipping-method-provider  | [Create a new shipping method service provider class.](#27-create-a-new-shipping-method-service-provider-class) |  provider-name, shipment-package-name  | --force             |
-| 28.    | create-a-new-theme-for-shop  | [create-a-new-theme-for-shop.](#28-create-a-new-theme-for-shop) |  theme-name  | --force             |
+| 28.    | create-a-new-theme-for-shop  | [Create a new theme for shop.](#28-create-a-new-theme-for-shop) |  theme-name  | --force             |
 
 **--force** : To overwrite the files
 
@@ -515,7 +515,7 @@ php artisan package:make-shipping-method-provider TestShippingMethodServiceProvi
 
 #### 28. Create a new theme for shop
 
-This command will create a new theme array inside '**config/themes.php**' directory.
+This command will create a new theme array inside '**config/themes.php**' file under **themes** key.
 
 ~~~php
 php artisan package:make-shop-theme test ACME/Theme --force
