@@ -30,6 +30,7 @@ use Webkul\PackageGenerator\Console\Command\PaymentMakeCommand;
 use Webkul\PackageGenerator\Console\Command\ShippingPackageMakeCommand;
 use Webkul\PackageGenerator\Console\Command\ShippingMethodProviderMakeCommand;
 use Webkul\PackageGenerator\Console\Command\ShippingMakeCommand;
+use Webkul\PackageGenerator\Console\Command\ShopThemeMakeCommand;
 
 class PackageGeneratorServiceProvider extends ServiceProvider
 {
@@ -88,6 +89,7 @@ class PackageGeneratorServiceProvider extends ServiceProvider
                 ShippingPackageMakeCommand::class,
                 ShippingMethodProviderMakeCommand::class,
                 ShippingMakeCommand::class,
+                ShopThemeMakeCommand::class,
             ]);
         }
     }
