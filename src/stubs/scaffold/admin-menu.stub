@@ -4,7 +4,7 @@ return [
     [
         'key' => '$LOWER_NAME$',
         'name' => '$CAPITALIZE_NAME$',
-        'route' => '$LOWER_NAME$.admin.index',
+        'route' => 'admin.$LOWER_NAME$.index',
         'sort' => 2,
         'icon-class' => 'temp-icon',
     ]
