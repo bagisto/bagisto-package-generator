@@ -31,6 +31,7 @@ use Webkul\PackageGenerator\Console\Command\ShippingPackageMakeCommand;
 use Webkul\PackageGenerator\Console\Command\ShippingMethodProviderMakeCommand;
 use Webkul\PackageGenerator\Console\Command\ShippingMakeCommand;
 use Webkul\PackageGenerator\Console\Command\ShopThemeMakeCommand;
+use Webkul\PackageGenerator\Console\Command\AdminThemeMakeCommand;
 
 class PackageGeneratorServiceProvider extends ServiceProvider
 {
@@ -90,6 +91,7 @@ class PackageGeneratorServiceProvider extends ServiceProvider
                 ShippingMethodProviderMakeCommand::class,
                 ShippingMakeCommand::class,
                 ShopThemeMakeCommand::class,
+                AdminThemeMakeCommand::class,
             ]);
         }
     }
