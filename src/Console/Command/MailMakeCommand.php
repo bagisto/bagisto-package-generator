@@ -42,8 +42,6 @@ class MailMakeCommand extends MakeCommand
      */
     protected function getSourceFilePath()
     {
-        $path = base_path('packages/' . $this->argument('package')) . '/src/Mail';
-
-        return $path . '/' . $this->getClassName() . '.php';
+        return base_path('packages/' . $this->argument('package')) . '/src/Mail' . '/' . $this->getClassName() . '.php';
     }
 }

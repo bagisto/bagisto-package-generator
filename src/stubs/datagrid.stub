@@ -7,17 +7,23 @@ use Webkul\Ui\DataGrid\DataGrid;
 
 class $CLASS$ extends DataGrid
 {
-    protected $index = 'id';
-
-    protected $sortOrder = 'desc';
-
+    /**
+     * Prepare query builder.
+     *
+     * @return \Illuminate\Database\Query\Builder
+     */
     public function prepareQueryBuilder()
     {
         //queryBuilder = DB::table('table')->addSelect('id');
 
-        //$this->setQueryBuilder($queryBuilder);
+        //return $queryBuilder;
     }
 
+    /**
+     * Add columns.
+     *
+     * @return void
+     */
     public function addColumns()
     {
         $this->addColumn([
@@ -30,6 +36,11 @@ class $CLASS$ extends DataGrid
         ]);
     }
 
+    /**
+     * Prepare actions.
+     *
+     * @return void
+     */
     public function prepareActions()
     {
     }

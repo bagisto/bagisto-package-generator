@@ -42,9 +42,6 @@ class SeederMakeCommand extends MakeCommand
      */
     protected function getSourceFilePath()
     {
-        $path = base_path('packages/' . $this->argument('package')) . '/src/Database/Seeders';
-
-        return $path . '/' . $this->getClassName() . '.php';
+        return base_path('packages/' . $this->argument('package')) . '/src/Database/Seeders' . '/' . $this->getClassName() . '.php';
     }
-    
 }

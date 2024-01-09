@@ -3,8 +3,8 @@
 namespace Webkul\PackageGenerator\Generators;
 
 use Illuminate\Config\Repository as Config;
+use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Str;
 use Webkul\PackageGenerator\Package;
 
 class PackageGenerator
@@ -24,38 +24,17 @@ class PackageGenerator
     protected $packageName;
 
     /**
-     * Repository object
-     *
-     * @var \Illuminate\Config\Repository
-     */
-    protected $config;
-
-    /**
-     * Filesystem object
-     *
-     * @var \Illuminate\Filesystem\Filesystem
-     */
-    protected $filesystem;
-
-    /**
-     * Package object
-     *
-     * @var string
-     */
-    protected $package;
-
-    /**
-     * @var boolean
+     * @var bool
      */
     protected $plain;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $force;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $type = 'package';
 
@@ -96,7 +75,7 @@ class PackageGenerator
         'shipping' => [
             'scaffold/carriers'               => 'Config/carriers.php',
             'scaffold/shipping-method-system' => 'Config/system.php',
-        ]
+        ],
     ];
 
     /**
@@ -136,31 +115,22 @@ class PackageGenerator
             'config'   => 'Config',
             'carriers' => 'Carriers',
             'provider' => 'Providers',
-        ]
+        ],
     ];
 
     /**
      * The constructor.
-     * 
-     * @param  \Illuminate\Config\Repository  $config
-     * @param  \Illuminate\Filesystem\Filesystem  $filesystem
-     * @param  \Webkul\PackageGenerator\Package  $package
      */
     public function __construct(
-        Config $config,
-        Filesystem $filesystem,
-        Package $package
-    )
-    {
-        $this->config = $config;
-
-        $this->filesystem = $filesystem;
-
-        $this->package = $package;
+        protected Config $config,
+        protected Command $console,
+        protected Filesystem $filesystem,
+        protected Package $package
+    ) {
     }
 
     /**
-     * Set console 
+     * Set console
      *
      * @param  \Illuminate\Console\Command  $console
      * @return Webkul\PackageGenerator\Generators\PackageGenerator
@@ -201,7 +171,7 @@ class PackageGenerator
     /**
      * Set force status.
      *
-     * @param  boolean  $force
+     * @param  bool  $force
      * @return \Webkul\PackageGenerator\Generators\PackageGenerator
      */
     public function setForce($force)
@@ -214,7 +184,7 @@ class PackageGenerator
     /**
      * Set type status.
      *
-     * @param  boolean  $isPaymentPackage
+     * @param  bool  $isPaymentPackage
      * @return \Webkul\PackageGenerator\Generators\PackageGenerator
      */
     public function setType($type)
@@ -227,7 +197,7 @@ class PackageGenerator
     /**
      * Set isShippingPackage status.
      *
-     * @param  boolean  $isShippingPackage
+     * @param  bool  $isShippingPackage
      * @return \Webkul\PackageGenerator\Generators\PackageGenerator
      */
     public function setIsShippingPackage($isShippingPackage)
@@ -308,54 +278,66 @@ class PackageGenerator
      */
     public function createClasses()
     {
-        if ($this->type == 'package') {
-            $this->console->call('package:make-provider', [
-                'name'    => $this->packageName . 'ServiceProvider',
-                'package' => $this->packageName,
-            ]);
+        $commands = [
+            'package' => [
+                'package:make-provider' => [
+                    'name' => $this->packageName . 'ServiceProvider',
+                    'package' => $this->packageName
+                ],
 
-            $this->console->call('package:make-module-provider', [
-                'name'    => 'ModuleServiceProvider',
-                'package' => $this->packageName,
-            ]);
+                'package:make-module-provider' => [
+                    'name' => 'ModuleServiceProvider',
+                    'package' => $this->packageName
+                ],
 
-            $this->console->call('package:make-admin-controller', [
-                'name'    => $this->packageName . 'Controller',
-                'package' => $this->packageName
-            ]);
+                'package:make-admin-controller' => [
+                    'name' => $this->packageName . 'Controller',
+                    'package' => $this->packageName
+                ],
 
-            $this->console->call('package:make-shop-controller', [
-                'name'    => $this->packageName . 'Controller',
-                'package' => $this->packageName
-            ]);
+                'package:make-shop-controller' => [
+                    'name' => $this->packageName . 'Controller',
+                    'package' => $this->packageName
+                ],
 
-            $this->console->call('package:make-admin-route', [
-                'package' => $this->packageName
-            ]);
+                'package:make-admin-route' => [
+                    'package' => $this->packageName
+                ],
 
-            $this->console->call('package:make-shop-route', [
-                'package' => $this->packageName
-            ]);
-        } else if ($this->type == 'payment') {
-            $this->console->call('package:make-payment-method-provider', [
-                'name'    => $this->packageName . 'ServiceProvider',
-                'package' => $this->packageName,
-            ]);
+                'package:make-shop-route' => [
+                    'package' => $this->packageName
+                ],
+            ],
 
-            $this->console->call('package:make-payment', [
-                'name'    => $this->packageName,
-                'package' => $this->packageName,
-            ]);
-        } else if ($this->type == 'shipping') {
-            $this->console->call('package:make-shipping-method-provider', [
-                'name'    => $this->packageName . 'ServiceProvider',
-                'package' => $this->packageName,
-            ]);
+            'payment' => [
+                'package:make-payment-method-provider' => [
+                    'name' => $this->packageName . 'ServiceProvider',
+                    'package' => $this->packageName
+                ],
 
-            $this->console->call('package:make-shipping', [
-                'name'    => $this->packageName,
-                'package' => $this->packageName,
-            ]);
+                'package:make-payment' => [
+                    'name' => $this->packageName,
+                    'package' => $this->packageName
+                ],
+            ],
+
+            'shipping' => [
+                'package:make-shipping-method-provider' => [
+                    'name' => $this->packageName . 'ServiceProvider',
+                    'package' => $this->packageName
+                ],
+
+                'package:make-shipping' => [
+                    'name' => $this->packageName,
+                    'package' => $this->packageName
+                ],
+            ],
+        ];
+        
+        if (array_key_exists($this->type, $commands)) {
+            foreach ($commands[$this->type] as $command => $arguments) {
+                $this->console->call($command, $arguments);
+            }
         }
     }
 
@@ -381,26 +363,21 @@ class PackageGenerator
     }
 
     /**
-     * @param  string  $name
      * @return string
      */
-    protected function getClassNamespace($name)
+    protected function getClassNamespace(string $name)
     {
         return str_replace('/', '\\', $name);
     }
 
     /**
-     * Returns content of stub file
+     * Returns content of stub file.
      *
-     * @param  string  $stub
-     * @param  array  $variables
      * @return string
      */
-    public function getStubContents($stub, $variables = [])
+    public function getStubContents(string $stub, array $variables = [])
     {
-        $path = __DIR__ . '/../stubs/' . $stub . '.stub';
-
-        $contents = file_get_contents($path);
+        $contents = file_get_contents(__DIR__ . '/../stubs/' . $stub . '.stub');
 
         foreach ($variables as $search => $replace) {
             $contents = str_replace('$' . strtoupper($search) . '$', $replace, $contents);

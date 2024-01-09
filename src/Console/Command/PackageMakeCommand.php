@@ -2,8 +2,6 @@
 
 namespace Webkul\PackageGenerator\Console\Command;
 
-use Webkul\PackageGenerator\Generators\PackageGenerator;
-
 class PackageMakeCommand extends MakeCommand
 {
     /**

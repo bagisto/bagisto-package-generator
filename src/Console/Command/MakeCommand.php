@@ -4,44 +4,22 @@ namespace Webkul\PackageGenerator\Console\Command;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Str;
 use Webkul\PackageGenerator\Generators\PackageGenerator;
 
 class MakeCommand extends Command
 {
     /**
-     * Filesystem object
-     *
-     * @var \Illuminate\Filesystem\Filesystem
-     */
-    protected $filesystem;
-
-    /**
-     * PackageGenerator object
-     *
-     * @var \Webkul\PackageGenerator\Generators\PackageGenerator
-     */
-    protected $packageGenerator;
-
-    /**
      * Create a new command instance.
      *
-     * @param  \Illuminate\Filesystem\Filesystem  $filesystem
-     * @param  \Webkul\PackageGenerator\Generators\PackageGenerator  $packageGenerator
      * @return void
      */
     public function __construct(
-        Filesystem  $filesystem,
-        PackageGenerator $packageGenerator
-    )
-    {
-        $this->filesystem = $filesystem;
-
-        $this->packageGenerator = $packageGenerator;
-
+        protected Filesystem $filesystem,
+        protected PackageGenerator $packageGenerator
+    ) {
         parent::__construct();
     }
-    
+
     /**
      * Execute the console command.
      */

@@ -42,8 +42,6 @@ class EventMakeCommand extends MakeCommand
      */
     protected function getSourceFilePath()
     {
-        $path = base_path('packages/' . $this->argument('package')) . '/src/Events';
-
-        return $path . '/' . $this->getClassName() . '.php';
+        return base_path('packages/' . $this->argument('package')) . '/src/Events' . '/' . $this->getClassName() . '.php';
     }
 }

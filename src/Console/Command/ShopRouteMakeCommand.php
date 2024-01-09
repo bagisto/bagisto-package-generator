@@ -2,9 +2,6 @@
 
 namespace Webkul\PackageGenerator\Console\Command;
 
-use Illuminate\Support\Str;
-use Webkul\PackageGenerator\Generators\PackageGenerator;
-
 class ShopRouteMakeCommand extends MakeCommand
 {
     /**
@@ -45,8 +42,6 @@ class ShopRouteMakeCommand extends MakeCommand
      */
     protected function getSourceFilePath()
     {
-        $path = base_path('packages/' . $this->argument('package')) . '/src/Http';
-
-        return $path . '/shop-routes.php';
+        return base_path('packages/' . $this->argument('package')) . '/src/Routes' . '/shop-routes.php';
     }
 }

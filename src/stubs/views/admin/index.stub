@@ -1,10 +1,9 @@
-@extends('admin::layouts.master')
+<x-admin::layouts>
 
-@section('page_title')
-    Package $CAPITALIZE_NAME$
-@stop
-
-@section('content-wrapper')
+    <!-- Title of the page -->
+    <x-slot:title>
+        Package $CAPITALIZE_NAME$
+    </x-slot>
 
     <div class="content full-page dashboard">
         <div class="page-header">
@@ -19,5 +18,4 @@
         <div class="page-content">
         </div>
     </div>
-
-@stop
+</x-admin::layouts>

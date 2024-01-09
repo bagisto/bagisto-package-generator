@@ -2,10 +2,10 @@
 
 return [
     [
-        'key' => '$LOWER_NAME$',
-        'name' => '$CAPITALIZE_NAME$',
+        'key'   => '$LOWER_NAME$',
+        'name'  => '$CAPITALIZE_NAME$',
         'route' => 'admin.$LOWER_NAME$.index',
-        'sort' => 2,
-        'icon-class' => 'temp-icon',
+        'sort'  => 2,
+        'icon'  => 'temp-icon',
     ]
 ];

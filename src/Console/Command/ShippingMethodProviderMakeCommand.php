@@ -2,9 +2,6 @@
 
 namespace Webkul\PackageGenerator\Console\Command;
 
-use Illuminate\Support\Str;
-use Webkul\PackageGenerator\Generators\PackageGenerator;
-
 class ShippingMethodProviderMakeCommand extends MakeCommand
 {
     /**
@@ -46,8 +43,6 @@ class ShippingMethodProviderMakeCommand extends MakeCommand
      */
     protected function getSourceFilePath()
     {
-        $path = base_path('packages/' . $this->argument('package')) . '/src/Providers';
-
-        return $path . '/' . $this->getClassName() . '.php';
+        return base_path('packages/' . $this->argument('package')) . '/src/Providers' . '/' . $this->getClassName() . '.php';
     }
 }

@@ -42,9 +42,6 @@ class ModelProxyMakeCommand extends MakeCommand
      */
     protected function getSourceFilePath()
     {
-        $path = base_path('packages/' . $this->argument('package')) . '/src/Models';
-
-        return $path . '/' . $this->getClassName() . '.php';
+        return base_path('packages/' . $this->argument('package')) . '/src/Models' . '/' . $this->getClassName() . '.php';
     }
-    
 }

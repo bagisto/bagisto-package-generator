@@ -16,15 +16,9 @@ class $CLASS$ extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
-        $this->loadRoutesFrom(__DIR__ . '/../Http/admin-routes.php');
-
-        $this->loadRoutesFrom(__DIR__ . '/../Http/shop-routes.php');
+        $this->loadRoutesFrom(__DIR__ . '/../Http/web.php');
 
         $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', '$LOWER_NAME$');
-
-        $this->publishes([
-            __DIR__ . '/../../publishable/assets' => public_path('themes/default/assets'),
-        ], 'public');
 
         $this->loadViewsFrom(__DIR__ . '/../Resources/views', '$LOWER_NAME$');
 

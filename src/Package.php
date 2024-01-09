@@ -8,8 +8,6 @@ class Package
 {
     /**
      * The constructor.
-     * 
-     * @param  \Illuminate\Filesystem\Filesystem  $filesystem
      */
     public function __construct(Filesystem $filesystem)
     {
@@ -20,7 +18,7 @@ class Package
      * Checks if package exist or not
      *
      * @param  strign  $package
-     * @return boolean
+     * @return bool
      */
     public function has($package)
     {
