@@ -32,8 +32,9 @@ class AdminControllerMakeCommand extends MakeCommand
     protected function getStubVariables()
     {
         return [
-            'NAMESPACE' => $this->getClassNamespace($this->argument('package') . '/Http/Controllers/Admin'),
-            'CLASS'     => $this->getClassName(),
+            'NAMESPACE'  => $this->getClassNamespace($this->argument('package') . '/Http/Controllers/Admin'),
+            'CLASS'      => $this->getClassName(),
+            'LOWER_NAME' => $this->getLowerName(),
         ];
     }
 

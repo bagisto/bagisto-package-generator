@@ -5,7 +5,6 @@ namespace Webkul\PackageGenerator\Providers;
 use Illuminate\Support\ServiceProvider;
 use Webkul\PackageGenerator\Console\Command\AdminControllerMakeCommand;
 use Webkul\PackageGenerator\Console\Command\AdminRouteMakeCommand;
-use Webkul\PackageGenerator\Console\Command\AdminThemeMakeCommand;
 use Webkul\PackageGenerator\Console\Command\CommandMakeCommand;
 use Webkul\PackageGenerator\Console\Command\DatagridMakeCommand;
 use Webkul\PackageGenerator\Console\Command\EventMakeCommand;
@@ -31,7 +30,6 @@ use Webkul\PackageGenerator\Console\Command\ShippingMethodProviderMakeCommand;
 use Webkul\PackageGenerator\Console\Command\ShippingPackageMakeCommand;
 use Webkul\PackageGenerator\Console\Command\ShopControllerMakeCommand;
 use Webkul\PackageGenerator\Console\Command\ShopRouteMakeCommand;
-use Webkul\PackageGenerator\Console\Command\ShopThemeMakeCommand;
 
 class PackageGeneratorServiceProvider extends ServiceProvider
 {
@@ -84,8 +82,6 @@ class PackageGeneratorServiceProvider extends ServiceProvider
                 ShippingPackageMakeCommand::class,
                 ShippingMethodProviderMakeCommand::class,
                 ShippingMakeCommand::class,
-                ShopThemeMakeCommand::class,
-                AdminThemeMakeCommand::class,
             ]);
         }
     }

@@ -59,6 +59,8 @@ class MakeCommand extends Command
     }
 
     /**
+     * Get Package Name in Lower case.
+     * 
      * @return string
      */
     protected function getLowerName()
@@ -67,6 +69,8 @@ class MakeCommand extends Command
     }
 
     /**
+     * Get Class Name.
+     * 
      * @return string
      */
     protected function getClassName()
@@ -75,11 +79,22 @@ class MakeCommand extends Command
     }
 
     /**
-     * @param  string  $name
+     * Get NameSpace for Controller.
+     * 
      * @return string
      */
-    protected function getClassNamespace($name)
+    protected function getClassNamespace(string $name)
     {
         return str_replace('/', '\\', $name);
+    }
+
+    /**
+     * Get Controller Name.
+     * 
+     * @return string
+     */
+    protected function getClassControllerName()
+    {
+        return $this->getStudlyName() . 'Controller';
     }
 }

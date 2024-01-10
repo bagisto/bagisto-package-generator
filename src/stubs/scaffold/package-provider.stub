@@ -16,7 +16,9 @@ class $CLASS$ extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
-        $this->loadRoutesFrom(__DIR__ . '/../Http/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../Routes/admin-routes.php');
+
+        $this->loadRoutesFrom(__DIR__ . '/../Routes/shop-routes.php');
 
         $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', '$LOWER_NAME$');
 

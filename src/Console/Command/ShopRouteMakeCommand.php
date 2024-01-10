@@ -33,6 +33,7 @@ class ShopRouteMakeCommand extends MakeCommand
     {
         return [
             'CONTROLLER_CLASS_NAME' => $this->getClassNamespace($this->argument('package') . '/Http/Controllers/Shop/' . $this->getStudlyName() . 'Controller'),
+            'CLASS'                 => $this->getClassControllerName(),
             'LOWER_NAME'            => $this->getLowerName(),
         ];
     }

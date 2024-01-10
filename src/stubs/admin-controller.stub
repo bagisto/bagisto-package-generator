@@ -10,25 +10,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class $CLASS$ extends Controller
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    
-    /**
-     * Contains route related configuration
-     *
-     * @var array
-     */
-    protected $_config;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('admin');
-
-        $this->_config = request('_config');
-    }
 
     /**
      * Display a listing of the resource.
@@ -37,7 +18,7 @@ class $CLASS$ extends Controller
      */
     public function index()
     {
-        return view($this->_config['view']);
+        return view('$LOWER_NAME$::admin.index');
     }
 
     /**
@@ -47,7 +28,7 @@ class $CLASS$ extends Controller
      */
     public function create()
     {
-        return view($this->_config['view']);
+        return view('$LOWER_NAME$::admin.create');
     }
 
     /**
@@ -57,38 +38,35 @@ class $CLASS$ extends Controller
      */
     public function store()
     {
-        
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(int $id)
     {
-        return view($this->_config['view']);
+        return view('$LOWER_NAME$::admin.edit');
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(int $id)
     {
-        
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         
     }

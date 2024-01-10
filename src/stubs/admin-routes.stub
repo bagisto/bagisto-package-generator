@@ -1,24 +1,9 @@
 <?php
-    Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin/$LOWER_NAME$'], function () {
-        Route::controller($CONTROLLER_CLASS_NAME$::class)->group(function () {
-            Route::get('', 'index')->name('admin.$LOWER_NAME$.index');
-        });
 
-        Route::get('', '$CONTROLLER_CLASS_NAME$@index')->defaults('_config', [
-                'view' => '$LOWER_NAME$::admin.index',
-            ])->name('admin.$LOWER_NAME$.index');
+use $CONTROLLER_CLASS_NAME$;
 
+Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin/$LOWER_NAME$'], function () {
+    Route::controller($CLASS$::class)->group(function () {
+        Route::get('', 'index')->name('admin.$LOWER_NAME$.index');
     });
-
-<?php
-
-Route::group([
-        'prefix'        => 'admin/$LOWER_NAME$',
-        'middleware'    => ['web', 'admin']
-    ], function () {
-
-        Route::get('', '$CONTROLLER_CLASS_NAME$@index')->defaults('_config', [
-            'view' => '$LOWER_NAME$::admin.index',
-        ])->name('admin.$LOWER_NAME$.index');
-
 });
