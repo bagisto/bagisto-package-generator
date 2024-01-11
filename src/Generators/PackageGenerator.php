@@ -359,7 +359,9 @@ class PackageGenerator
     }
 
     /**
-     * @return string
+     * Returns Stub variables.
+     * 
+     * @return array
      */
     protected function getClassNamespace(string $name)
     {
