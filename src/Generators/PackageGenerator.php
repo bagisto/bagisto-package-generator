@@ -335,10 +335,8 @@ class PackageGenerator
 
     /**
      * Returns Stub variables.
-     * 
-     * @return array
      */
-    protected function getStubVariables()
+    protected function getStubVariables(): array
     {
         return [
             'LOWER_NAME'      => $this->getLowerName(),
@@ -350,20 +348,16 @@ class PackageGenerator
 
     /**
      * Returns class name.
-     * 
-     * @return string
      */
-    protected function getClassName()
+    protected function getClassName(): string
     {
         return class_basename($this->packageName);
     }
 
     /**
-     * Returns Stub variables.
-     * 
-     * @return array
+     * Returns class Namespace.
      */
-    protected function getClassNamespace(string $name)
+    protected function getClassNamespace(string $name) : string
     {
         return str_replace('/', '\\', $name);
     }
@@ -386,20 +380,16 @@ class PackageGenerator
 
     /**
      * Returns name in capital letter.
-     * 
-     * @return string
      */
-    protected function getCapitalizeName()
+    protected function getCapitalizeName(): string
     {
         return ucwords(class_basename($this->packageName));
     }
 
     /**
      * Returns name in small letter.
-     * 
-     * @return string
      */
-    protected function getLowerName()
+    protected function getLowerName() : string
     {
         return strtolower(class_basename($this->packageName));
     }
