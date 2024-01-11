@@ -8,5 +8,4 @@
     <div class="main">
         Package $CAPITALIZE_NAME$
     </div>
-
 </x-shop::layouts>

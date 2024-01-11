@@ -55,6 +55,9 @@ class PackageGenerator
             'assets/images/icon-temp'                    => 'Resources/assets/images/icon-temp.svg',
             'assets/images/icon-temp-active'             => 'Resources/assets/images/icon-temp-active.svg',
             'package'                                    => '../package.json',
+            'postcss-config'                             => '../postcss.config.js',
+            'tailwind-config'                            => '../tailwind.config.js',
+            'vite-config'                                => '../vite.config.js',
         ],
 
         'payment'  => [
@@ -110,6 +113,8 @@ class PackageGenerator
 
     /**
      * The constructor.
+     * 
+     * @return void
      */
     public function __construct(
         protected Config $config,
@@ -135,10 +140,9 @@ class PackageGenerator
     /**
      * Set package.
      *
-     * @param  string  $packageName
      * @return Webkul\PackageGenerator\Generators\PackageGenerator
      */
-    public function setPackage($packageName)
+    public function setPackage(string $packageName)
     {
         $this->packageName = $packageName;
 
@@ -148,10 +152,9 @@ class PackageGenerator
     /**
      * Set package plain.
      *
-     * @param  string  $plain
      * @return Webkul\PackageGenerator\Generators\PackageGenerator
      */
-    public function setPlain($plain)
+    public function setPlain(string $plain)
     {
         $this->plain = $plain;
 
@@ -161,10 +164,9 @@ class PackageGenerator
     /**
      * Set force status.
      *
-     * @param  bool  $force
      * @return \Webkul\PackageGenerator\Generators\PackageGenerator
      */
-    public function setForce($force)
+    public function setForce(bool $force)
     {
         $this->force = $force;
 
@@ -174,7 +176,7 @@ class PackageGenerator
     /**
      * Set type status.
      *
-     * @param  bool  $isPaymentPackage
+     * @param  bool  $type
      * @return \Webkul\PackageGenerator\Generators\PackageGenerator
      */
     public function setType($type)
@@ -216,7 +218,7 @@ class PackageGenerator
 
         $this->createFolders();
 
-        if (! $this->plain) {
+        if (!$this->plain) {
             $this->createFiles();
 
             $this->createClasses();
@@ -251,7 +253,7 @@ class PackageGenerator
         foreach ($this->stubFiles[$this->type] as $stub => $file) {
             $path = base_path('packages/' . $this->packageName . '/src') . '/' . $file;
 
-            if (! $this->filesystem->isDirectory($dir = dirname($path))) {
+            if (!$this->filesystem->isDirectory($dir = dirname($path))) {
                 $this->filesystem->makeDirectory($dir, 0775, true);
             }
 
@@ -323,7 +325,7 @@ class PackageGenerator
                 ],
             ],
         ];
-        
+
         if (array_key_exists($this->type, $commands)) {
             foreach ($commands[$this->type] as $command => $arguments) {
                 $this->console->call($command, $arguments);

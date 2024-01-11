@@ -18,6 +18,6 @@
     "@vee-validate/rules": "^4.9.1",
     "@vitejs/plugin-vue": "^4.2.3",
     "mitt": "^3.0.1",
-    "vee-validate": "^4.9.1",
+    "vee-validate": "^4.9.1"
   }
 }

@@ -8,19 +8,19 @@ class Package
 {
     /**
      * The constructor.
+     *
+     * @return void
      */
-    public function __construct(Filesystem $filesystem)
+    public function __construct(protected Filesystem $filesystem)
     {
-        $this->filesystem = $filesystem;
     }
 
     /**
      * Checks if package exist or not
      *
-     * @param  strign  $package
      * @return bool
      */
-    public function has($package)
+    public function has(string $package)
     {
         return $this->filesystem->isDirectory(base_path('packages/' . $package));
     }
@@ -28,10 +28,9 @@ class Package
     /**
      * Deletes specific package
      *
-     * @param  strign  $package
      * @return void
      */
-    public function delete($package)
+    public function delete(string $package)
     {
         $this->filesystem->deleteDirectory(base_path('packages/' . $package));
     }

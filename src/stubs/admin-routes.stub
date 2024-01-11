@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use $CONTROLLER_CLASS_NAME$;
 
 Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin/$LOWER_NAME$'], function () {

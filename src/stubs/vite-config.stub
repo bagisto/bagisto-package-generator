@@ -24,9 +24,9 @@ export default defineConfig(({ mode }) => {
             vue(),
 
             laravel({
-                hotFile: "../../../public/$LOWER_PACKAGE_NAME$-default-vite.hot",
+                hotFile: "../../../public/$LOWER_NAME$-default-vite.hot",
                 publicDirectory: "../../../public",
-                buildDirectory: "themes/$LOWER_PACKAGE_NAME$/default/build",
+                buildDirectory: "themes/$LOWER_NAME$/default/build",
                 input: [
                     "src/Resources/assets/css/app.css",
                     "src/Resources/assets/js/app.js",

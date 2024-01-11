@@ -1,17 +1,23 @@
-.temp-icon {
-    width: 48px;
-    height: 48px;
-    display: inline-block;
-    background-size: cover;
-    background-image: url("../images/icon-temp.svg");
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.active {
+@layer components {
     .temp-icon {
-        background-image: url("../images/icon-temp-active.svg");
+        width: 48px;
+        height: 48px;
+        display: inline-block;
+        background-size: cover;
+        background-image: url("../images/icon-temp.svg");
     }
 
-    &.temp-icon {
-        background-image: url("../images/icon-temp-active.svg");
+    .active {
+        .temp-icon {
+            background-image: url("../images/icon-temp-active.svg");
+        }
+
+        &.temp-icon {
+            background-image: url("../images/icon-temp-active.svg");
+        }
     }
 }

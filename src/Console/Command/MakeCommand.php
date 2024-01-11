@@ -27,13 +27,13 @@ class MakeCommand extends Command
     {
         $path = $this->getSourceFilePath();
 
-        if (! $this->filesystem->isDirectory($dir = dirname($path))) {
+        if (!$this->filesystem->isDirectory($dir = dirname($path))) {
             $this->filesystem->makeDirectory($dir, 0777, true);
         }
 
         $contents = $this->getStubContents();
 
-        if (! $this->filesystem->exists($path)) {
+        if (!$this->filesystem->exists($path)) {
             $this->filesystem->put($path, $contents);
         } else {
             if ($this->option('force')) {
@@ -96,5 +96,15 @@ class MakeCommand extends Command
     protected function getClassControllerName()
     {
         return $this->getStudlyName() . 'Controller';
+    }
+
+    /**
+     * Get Repository Name.
+     * 
+     * @return string
+     */
+    protected function getClassContractName(string $name)
+    {
+        return $name . 'Contract';
     }
 }

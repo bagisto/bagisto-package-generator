@@ -5,17 +5,9 @@
         Package $CAPITALIZE_NAME$
     </x-slot>
 
-    <div class="content full-page dashboard">
-        <div class="page-header">
-            <div class="page-title">
-                <h1>Package $CAPITALIZE_NAME$</h1>
-            </div>
-
-            <div class="page-action">
-            </div>
-        </div>
-
-        <div class="page-content">
-        </div>
+    <!-- Page Content -->
+    <div class="page-content">
+        <h1>Package $CAPITALIZE_NAME$</h1>
     </div>
+
 </x-admin::layouts>
