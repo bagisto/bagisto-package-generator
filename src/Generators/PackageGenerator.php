@@ -125,7 +125,7 @@ class PackageGenerator
     }
 
     /**
-     * Set console
+     * Set console.
      *
      * @param  \Illuminate\Console\Command  $console
      * @return Webkul\PackageGenerator\Generators\PackageGenerator
@@ -200,7 +200,7 @@ class PackageGenerator
     }
 
     /**
-     * Generate package
+     * Generate package.
      *
      * @return void
      */
@@ -218,7 +218,7 @@ class PackageGenerator
 
         $this->createFolders();
 
-        if (!$this->plain) {
+        if (! $this->plain) {
             $this->createFiles();
 
             $this->createClasses();
@@ -228,7 +228,7 @@ class PackageGenerator
     }
 
     /**
-     * Generate package folders
+     * Generate package folders.
      *
      * @return void
      */
@@ -242,7 +242,7 @@ class PackageGenerator
     }
 
     /**
-     * Generate package files
+     * Generate package files.
      *
      * @return void
      */
@@ -253,7 +253,7 @@ class PackageGenerator
         foreach ($this->stubFiles[$this->type] as $stub => $file) {
             $path = base_path('packages/' . $this->packageName . '/src') . '/' . $file;
 
-            if (!$this->filesystem->isDirectory($dir = dirname($path))) {
+            if (! $this->filesystem->isDirectory($dir = dirname($path))) {
                 $this->filesystem->makeDirectory($dir, 0775, true);
             }
 
@@ -264,7 +264,7 @@ class PackageGenerator
     }
 
     /**
-     * Generate package classes
+     * Generate package classes.
      *
      * @return void
      */
@@ -334,6 +334,8 @@ class PackageGenerator
     }
 
     /**
+     * Returns Stub variables.
+     * 
      * @return array
      */
     protected function getStubVariables()
@@ -347,6 +349,8 @@ class PackageGenerator
     }
 
     /**
+     * Returns class name.
+     * 
      * @return string
      */
     protected function getClassName()
@@ -379,6 +383,8 @@ class PackageGenerator
     }
 
     /**
+     * Returns name in capital letter.
+     * 
      * @return string
      */
     protected function getCapitalizeName()
@@ -387,6 +393,8 @@ class PackageGenerator
     }
 
     /**
+     * Returns name in small letter.
+     * 
      * @return string
      */
     protected function getLowerName()
