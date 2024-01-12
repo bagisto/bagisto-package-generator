@@ -16,7 +16,8 @@ class MakeCommand extends Command
     public function __construct(
         protected Filesystem $filesystem,
         protected PackageGenerator $packageGenerator
-    ) {
+    )
+    {
         parent::__construct();
     }
 
@@ -96,15 +97,5 @@ class MakeCommand extends Command
     protected function getClassControllerName()
     {
         return $this->getStudlyName() . 'Controller';
-    }
-
-    /**
-     * Get Repository Name.
-     * 
-     * @return string
-     */
-    protected function getClassContractName(string $name)
-    {
-        return $name . 'Contract';
     }
 }

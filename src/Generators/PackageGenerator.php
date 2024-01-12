@@ -121,7 +121,8 @@ class PackageGenerator
         protected Command $console,
         protected Filesystem $filesystem,
         protected Package $package
-    ) {
+    )
+    {
     }
 
     /**
