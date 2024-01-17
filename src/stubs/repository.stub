@@ -3,7 +3,6 @@
 namespace $NAMESPACE$;
 
 use Webkul\Core\Eloquent\Repository;
-use $CONTRACT_CLASS$;
 
 class $CLASS$ extends Repository
 {
@@ -14,6 +13,6 @@ class $CLASS$ extends Repository
      */
     function model()
     {
-        return $CONTRACT_CLASS_NAME$::class;
+        return '$CONTRACT_CLASS$';
     }
 }

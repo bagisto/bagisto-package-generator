@@ -32,10 +32,9 @@ class RepositoryMakeCommand extends MakeCommand
     protected function getStubVariables()
     {
         return [
-            'NAMESPACE'           => $this->getClassNamespace($this->argument('package') . '/Repositories'),
-            'CLASS'               => $this->getClassName(),
-            'CONTRACT_CLASS_NAME' => $this->getContractName(),
-            'CONTRACT_CLASS'      => $this->getClassNamespace($this->argument('package') . '/Contracts/' . $this->getContractName()),
+            'NAMESPACE'      => $this->getClassNamespace($this->argument('package') . '/Repositories'),
+            'CLASS'          => $this->getClassName(),
+            'CONTRACT_CLASS' => $this->getClassNamespace($this->argument('package') . '/Contracts/' . $this->getContractName()),
         ];
     }
 
