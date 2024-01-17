@@ -1,37 +1,53 @@
+@props([
+    'hasHeader'  => true,
+    'hasFeature' => true,
+    'hasFooter'  => true,
+])
+
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}" dir="{{ core()->getCurrentLocale()->direction }}">
     <head>
-        <title>@yield('page_title')</title>
+        <title>{{ $title ?? '' }}</title>
 
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="base-url" content="{{ url()->to('/') }}">
+        <meta name="currency-code" content="{{ core()->getCurrentCurrencyCode() }}">
         <meta http-equiv="content-language" content="{{ app()->getLocale() }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        @yield('head')
+        @stack('meta')
 
-        @section('seo')
-            <meta name="description" content="{{ core()->getCurrentChannel()->description }}"/>
-        @show
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" as="style">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
 
-        @stack('css')
-        
-        <style>
-            .main-heading {
-                top: 30%;
-                left: 35%;
-                font-size: 50px;
-                position: absolute;
-            }
-        </style>
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" as="style">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap">
+
+        @stack('styles')
 
         {!! view_render_event('bagisto.shop.layout.head') !!}
     </head>
 
-    <body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif>
+    <body>
         {!! view_render_event('bagisto.shop.layout.body.before') !!}
-            <b class="main-heading">Hello $THEME_KEY$ Theme</b>
+
+        <div id="app">
+            {!! view_render_event('bagisto.shop.layout.content.before') !!}
+
+            <!-- Page Content -->
+            <h1 style="text-align:center;">Hello $THEME_KEY$ Theme</h1>
+
+            {!! view_render_event('bagisto.shop.layout.content.after') !!}
+        </div>
+
         {!! view_render_event('bagisto.shop.layout.body.after') !!}
+
+        @stack('scripts')
+
+        <script type="text/javascript">
+            {!! core()->getConfigData('general.content.custom_scripts.custom_javascript') !!}
+        </script>
     </body>
 </html>

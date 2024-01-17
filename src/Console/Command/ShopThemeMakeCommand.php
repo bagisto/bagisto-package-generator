@@ -31,18 +31,23 @@ class ShopThemeMakeCommand extends MakeCommand
 
         $themeKey = $this->argument('key');
 
-        $themeContent['themes'][$themeKey] = [
-            'views_path'    => "resources/themes/$themeKey/views",
-            'assets_path'   => "public/themes/$themeKey/assets",
+        $themeContent['shop'][$themeKey] = [
             'name'          => ucfirst($this->argument('key')),
-            'parent'        => 'default'
+            'assets_path'   => "public/themes/shop/$themeKey",
+            'views_path'    => "resources/themes/shop/$themeKey/views",
+
+            'vite'        => [
+                'hot_file'                 => "shop-$themeKey-vite.hot",
+                'build_directory'          => "themes/shop/$themeKey/build",
+                'package_assets_directory' => 'src/Resources/assets',
+            ],
         ];
 
         $themeContent = $this->varexport($themeContent);
 
         $this->createMaster($themeKey);
 
-        return "<?php\n \nreturn {$themeContent};\n?>";
+        return "<?php\n \nreturn {$themeContent};";
     }
 
     /**
@@ -65,20 +70,20 @@ class ShopThemeMakeCommand extends MakeCommand
 
         $array = preg_replace(["/\s*array\s\($/", "/\)(,)?$/", "/\s=>\s$/"], [NULL, ']$1', ' => ['], $array);
 
-        $export = join(PHP_EOL, array_filter(["["] + $array));
+        $export = implode(PHP_EOL, array_filter(['['] + $array));
 
         return print_r($export, true);
     }
 
     public function createMaster($themeKey)
     {
-        $layoutsPath = base_path('resources/themes/' . $themeKey . '/views/layouts');
+        $layoutsPath = base_path('resources/themes/shop/' . $themeKey . '/views/home');
 
         if (! $this->filesystem->isDirectory($dir = $layoutsPath)) {
             $this->filesystem->makeDirectory($dir, 0775, true);
         }
 
-        $this->filesystem->put($layoutsPath . '/master.blade.php', $this->packageGenerator->getStubContents("theme-master", [
+        $this->filesystem->put($layoutsPath . '/index.blade.php', $this->packageGenerator->getStubContents("theme-master", [
             "THEME_KEY" => ucfirst($themeKey)
         ]));
     }

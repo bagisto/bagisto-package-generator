@@ -31,25 +31,23 @@ class AdminThemeMakeCommand extends MakeCommand
 
         $themeKey = $this->argument('key');
 
-        $themeContent['admin-themes'][$themeKey] = [
+        $themeContent['admin'][$themeKey] = [
             'name'          => ucfirst($this->argument('key')),
-            'assets_path'   => "public/admin-themes/$themeKey/assets",
-            'views_path'    => "resources/admin-themes/$themeKey/views",
+            'assets_path'   => "public/themes/admin/$themeKey",
+            'views_path'    => "resources/themes/admin/$themeKey/views",
 
             'vite'        => [
-                'hot_file'                 => "$themeKey-default-vite.hot",
-                'build_directory'          => "themes/$themeKey/default/build",
+                'hot_file'                 => "admin-$themeKey-vite.hot",
+                'build_directory'          => "themes/admin/$themeKey/build",
                 'package_assets_directory' => 'src/Resources/assets',
             ],
         ];
 
         $themeContent = $this->varexport($themeContent);
 
-        // $this->filesystem->put($sourceFilePath, $themeContent);
-
         $this->createMaster($themeKey);
 
-        return "<?php\n \nreturn {$themeContent};\n?>";
+        return "<?php\n \nreturn {$themeContent};";
     }
 
     /**
@@ -72,7 +70,7 @@ class AdminThemeMakeCommand extends MakeCommand
 
         $array = preg_replace(["/\s*array\s\($/", "/\)(,)?$/", "/\s=>\s$/"], [null, ']$1', ' => ['], $array);
 
-        $export = join(PHP_EOL, array_filter(['['] + $array));
+        $export = implode(PHP_EOL, array_filter(['['] + $array));
 
         return print_r($export, true);
     }
@@ -84,13 +82,13 @@ class AdminThemeMakeCommand extends MakeCommand
      */
     public function createMaster(string $themeKey)
     {
-        $layoutsPath = base_path('resources/admin-themes/' . $themeKey . '/views/layouts');
+        $layoutsPath = base_path('resources/themes/admin/' . $themeKey . '/views/dashboard');
 
         if (! $this->filesystem->isDirectory($dir = $layoutsPath)) {
             $this->filesystem->makeDirectory($dir, 0775, true);
         }
 
-        $this->filesystem->put($layoutsPath . '/master.blade.php', $this->packageGenerator->getStubContents('theme-master', [
+        $this->filesystem->put($layoutsPath . '/index.blade.php', $this->packageGenerator->getStubContents('theme-master', [
             'THEME_KEY' => ucfirst($themeKey),
         ]));
     }
