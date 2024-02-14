@@ -2,7 +2,7 @@
 
 return [
     [
-        'key'    => 'sales.paymentmethods.$LOWER_NAME$',
+        'key'    => 'sales.payment_methods.$LOWER_NAME$',
         'name'   => '$CAPITALIZE_NAME$',
         'sort'   => 1,
         'fields' => [

@@ -2,9 +2,6 @@
 
 namespace $NAMESPACE$;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
-
 class $CLASS$
 {
     /**
@@ -20,10 +17,9 @@ class $CLASS$
     /**
      * Handle the event.
      *
-     * @param  object  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(object $event)
     {
         //
     }

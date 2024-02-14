@@ -2,8 +2,6 @@
 
 namespace Webkul\PackageGenerator\Console\Command;
 
-use Webkul\PackageGenerator\Generators\PackageGenerator;
-
 class ModuleProviderMakeCommand extends MakeCommand
 {
     /**
@@ -44,8 +42,6 @@ class ModuleProviderMakeCommand extends MakeCommand
      */
     protected function getSourceFilePath()
     {
-        $path = base_path('packages/' . $this->argument('package')) . '/src/Providers';
-
-        return $path . '/' . $this->getClassName() . '.php';
+        return base_path('packages/' . $this->argument('package')) . '/src/Providers' . '/' . $this->getClassName() . '.php';
     }
 }

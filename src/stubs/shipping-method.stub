@@ -2,10 +2,8 @@
 
 namespace $NAMESPACE$;
 
-use Config;
 use Webkul\Shipping\Carriers\AbstractShipping;
 use Webkul\Checkout\Models\CartShippingRate;
-use Webkul\Shipping\Facades\Shipping;
 
 class $CLASS$ extends AbstractShipping
 {

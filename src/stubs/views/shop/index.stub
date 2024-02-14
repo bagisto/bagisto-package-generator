@@ -1,0 +1,11 @@
+<x-shop::layouts>
+
+    <!-- Title of the page -->
+    <x-slot:title>
+        Package $CAPITALIZE_NAME$
+    </x-slot>
+
+    <div class="main">
+        Package $CAPITALIZE_NAME$
+    </div>
+</x-shop::layouts>

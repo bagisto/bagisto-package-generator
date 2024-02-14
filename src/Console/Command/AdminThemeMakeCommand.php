@@ -2,9 +2,6 @@
 
 namespace Webkul\PackageGenerator\Console\Command;
 
-use Illuminate\Support\Str;
-use Webkul\PackageGenerator\Generators\PackageGenerator;
-
 class AdminThemeMakeCommand extends MakeCommand
 {
     /**
@@ -22,6 +19,8 @@ class AdminThemeMakeCommand extends MakeCommand
     protected $description = 'Create a new theme for admin.';
 
     /**
+     * Returns stub file content.
+     * 
      * @return mixed
      */
     protected function getStubContents()
@@ -32,50 +31,65 @@ class AdminThemeMakeCommand extends MakeCommand
 
         $themeKey = $this->argument('key');
 
-        $themeContent['admin-themes'][$themeKey] = [
-            'views_path'    => "resources/admin-themes/$themeKey/views",
-            'assets_path'   => "public/admin-themes/$themeKey/assets",
+        $themeContent['admin'][$themeKey] = [
             'name'          => ucfirst($this->argument('key')),
+            'assets_path'   => "public/themes/admin/$themeKey",
+            'views_path'    => "resources/themes/admin/$themeKey/views",
+
+            'vite'        => [
+                'hot_file'                 => "admin-$themeKey-vite.hot",
+                'build_directory'          => "themes/admin/$themeKey/build",
+                'package_assets_directory' => 'src/Resources/assets',
+            ],
         ];
 
         $themeContent = $this->varexport($themeContent);
 
         $this->createMaster($themeKey);
 
-        return "<?php\n \nreturn {$themeContent};\n?>";
+        return "<?php\n \nreturn {$themeContent};";
     }
 
     /**
+     * Returns source file path.
+     * 
      * @return string
      */
     protected function getSourceFilePath()
     {
-        $path = base_path('config/');
-
-        return $path . 'themes.php';
+        return base_path('config/') . 'themes.php';
     }
 
     public function varexport($expression)
     {
-        $export = var_export($expression, TRUE);
-        $export = preg_replace("/^([ ]*)(.*)/m", '$1$1$2', $export);
+        $export = var_export($expression, true);
+
+        $export = preg_replace('/^([ ]*)(.*)/m', '$1$1$2', $export);
+
         $array = preg_split("/\r\n|\n|\r/", $export);
-        $array = preg_replace(["/\s*array\s\($/", "/\)(,)?$/", "/\s=>\s$/"], [NULL, ']$1', ' => ['], $array);
-        $export = join(PHP_EOL, array_filter(["["] + $array));
+
+        $array = preg_replace(["/\s*array\s\($/", "/\)(,)?$/", "/\s=>\s$/"], [null, ']$1', ' => ['], $array);
+
+        $export = implode(PHP_EOL, array_filter(['['] + $array));
 
         return print_r($export, true);
     }
 
-    public function createMaster($themeKey)
+    /**
+     * Created Master file inside the resource path.
+     *
+     * @return void
+     */
+    public function createMaster(string $themeKey)
     {
-        $layoutsPath = base_path('resources/admin-themes/' . $themeKey . '/views/layouts');
+        $layoutsPath = base_path('resources/themes/admin/' . $themeKey . '/views/dashboard');
 
         if (! $this->filesystem->isDirectory($dir = $layoutsPath)) {
             $this->filesystem->makeDirectory($dir, 0775, true);
         }
 
-        $this->filesystem->put($layoutsPath . '/master.blade.php', $this->packageGenerator->getStubContents("theme-master", [
-            "THEME_KEY" => ucfirst($themeKey)
+        $this->filesystem->put($layoutsPath . '/index.blade.php', $this->packageGenerator->getStubContents('theme-master', [
+            'THEME_KEY' => ucfirst($themeKey),
         ]));
     }
 }

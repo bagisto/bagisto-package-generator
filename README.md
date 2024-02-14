@@ -10,7 +10,7 @@ It packs in lots of demanding features that allows your business to scale in no 
 
 ## 2. Requirements
 
-* **Bagisto**: v1.1.2 or higher.
+* **Bagisto**: v2.0 or higher.
 
 ## 3. Installation
 
@@ -59,8 +59,10 @@ Below are the list of commands,
 | 25.    | package:make-payment-method-provider   | [Create a new payment method service provider class.](#25-create-a-new-payment-method-service-provider-class)   |  provider-name, payment-package-name   | --force             |
 | 26.    | package:make-shipping-method           | [Create a new shipping method package.](#26-create-a-new-shipping-method-package)                               |  shipment-package-name                 | --force             |
 | 27.    | package:make-shipping-method-provider  | [Create a new shipping method service provider class.](#27-create-a-new-shipping-method-service-provider-class) |  provider-name, shipment-package-name  | --force             |
-| 28.    | create-a-new-theme-for-shop  | [Create a new theme for shop.](#28-create-a-new-theme-for-shop) |  theme-name  | --force             |
-| 29.    | create-a-new-theme-for-admin  | [Create a new theme for admin.](#29-create-a-new-theme-for-admin) |  theme-name  | --force             |
+| 28.    | package:make-vite-config            | [Create a new vite config file.](#8-create-a-new-vite-config-file)                                                  |   package-name     | --force             |
+| 29.    | package:make-tailwind-config            | [Create a new tailwind config file.](#8-create-a-new-tailwind-config-file)                                                  |   package-name     | --force             |
+| 30.    | package:make-postcss-config            | [Create a new post css config file.](#8-create-a-new-post-css-config-file)                                                  |   package-name     | --force             |
+| 31.    | create-a-new-theme-for-admin  | [Create a new theme for admin.](#32-create-a-new-theme-for-admin) |  theme-name  | --force             |
 
 
 **--force** : To overwrite the files
@@ -451,7 +453,57 @@ If module service provider class already present then you can use force command 
 php artisan package:make-module-provider TestServiceProvider ACME/TestPackage --force
 ~~~
 
-#### 24. Create a new payment method package
+#### 24. Create a new vite config file.
+
+This command will create a new vite config file in '**packages/ACME/TestPackage**' directory.
+
+~~~php
+php artisan package:make-vite-config vite.config ACME/TestPackage
+~~~
+
+##### This command will create a new vite config file with force command
+
+If vite config file already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-vite-config vite.config ACME/TestPackage --force
+~~~
+
+#### 25. Create a new tailwind config file.
+
+This command will create a new tailwind config file in '**packages/ACME/TestPackage**' directory.
+
+~~~php
+php artisan package:make-tailwind-config tailwind.config ACME/TestPackage
+~~~
+
+##### This command will create a new tailwind config file with force command
+
+If tailwind config file already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-tailwind-config tailwind.config ACME/TestPackage --force
+~~~
+
+#### 26. Create a new post css config file.
+
+This command will create a new post css config file in '**packages/ACME/TestPackage**' directory.
+
+~~~php
+php artisan package:make-postcss-config postcss.config ACME/TestPackage
+~~~
+
+##### This command will create a new postcss config file with force command
+
+If postcss config file already present then you can use force command for overwriting.
+
+~~~php
+php artisan package:make-postcss-config tailwind.config ACME/TestPackage --force
+~~~
+
+
+
+#### 27. Create a new payment method package
 
 This command will create a whole new payment package for you in  '**packages/ACME/Stripe**' directory.
 
@@ -467,7 +519,7 @@ This command will overwrite whole directory structure.
 php artisan package:make-payment-method ACME/Stripe --force
 ~~~
 
-#### 25. Create a new payment method service provider class
+#### 28. Create a new payment method service provider class
 
 This command will create a new payment method service provider class in '**packages/ACME/Stripe/src/Providers**' directory.
 
@@ -483,7 +535,7 @@ If payment method service provider class already present then you can use force 
 php artisan package:make-payment-method-provider TestPaymentMethodServiceProvider ACME/Stripe --force
 ~~~
 
-#### 26. Create a new shipping method package
+#### 29. Create a new shipping method package
 
 This command will create a whole new shipment package in '**packages/ACME/FedEx**' directory.
 
@@ -499,7 +551,7 @@ This command will override whole directory structure.
 php artisan package:make-shipping-method ACME/FedEx --force
 ~~~
 
-#### 27. Create a new shipping method service provider class
+#### 30. Create a new shipping method service provider class
 
 This command will create a new shipping method service provider class '**packages/ACME/FedEx/src/Providers**' directory.
 
@@ -515,17 +567,17 @@ If shipping method service provider class already present then you can use force
 php artisan package:make-shipping-method-provider TestShippingMethodServiceProvider ACME/FedEx --force
 ~~~
 
-#### 28. Create a new theme for shop
+#### 31. Create a new theme for shop
 
-This command will create a new theme array inside '**config/themes.php**' file under **themes** key.
+This command will create a new theme array inside '**config/themes.php**' file under **shop** key.
 
 ~~~php
 php artisan package:make-shop-theme test ACME/Theme --force
 ~~~
 
-#### 29. Create a new theme for admin
+#### 32. Create a new theme for admin
 
-This command will create a new theme array inside '**config/themes.php**' file under **admin-themes** key.
+This command will create a new theme array inside '**config/themes.php**' file under **admin** key.
 
 ~~~php
 php artisan package:make-admin-theme test ACME/Theme --force

@@ -2,8 +2,6 @@
 
 namespace Webkul\PackageGenerator\Console\Command;
 
-use Webkul\PackageGenerator\Generators\PackageGenerator;
-
 class AdminControllerMakeCommand extends MakeCommand
 {
     /**
@@ -34,8 +32,9 @@ class AdminControllerMakeCommand extends MakeCommand
     protected function getStubVariables()
     {
         return [
-            'NAMESPACE' => $this->getClassNamespace($this->argument('package') . '/Http/Controllers/Admin'),
-            'CLASS'     => $this->getClassName(),
+            'NAMESPACE'  => $this->getClassNamespace($this->argument('package') . '/Http/Controllers/Admin'),
+            'CLASS'      => $this->getClassName(),
+            'LOWER_NAME' => $this->getLowerName(),
         ];
     }
 
@@ -44,8 +43,6 @@ class AdminControllerMakeCommand extends MakeCommand
      */
     protected function getSourceFilePath()
     {
-        $path = base_path('packages/' . $this->argument('package')) . '/src/Http/Controllers/Admin';
-
-        return $path . '/' . $this->getClassName() . '.php';
+        return base_path('packages/' . $this->argument('package')) . '/src/Http/Controllers/Admin' . '/' . $this->getClassName() . '.php';
     }
 }

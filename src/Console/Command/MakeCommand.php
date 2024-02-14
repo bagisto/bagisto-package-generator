@@ -4,44 +4,23 @@ namespace Webkul\PackageGenerator\Console\Command;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Str;
 use Webkul\PackageGenerator\Generators\PackageGenerator;
 
 class MakeCommand extends Command
 {
     /**
-     * Filesystem object
-     *
-     * @var \Illuminate\Filesystem\Filesystem
-     */
-    protected $filesystem;
-
-    /**
-     * PackageGenerator object
-     *
-     * @var \Webkul\PackageGenerator\Generators\PackageGenerator
-     */
-    protected $packageGenerator;
-
-    /**
      * Create a new command instance.
      *
-     * @param  \Illuminate\Filesystem\Filesystem  $filesystem
-     * @param  \Webkul\PackageGenerator\Generators\PackageGenerator  $packageGenerator
      * @return void
      */
     public function __construct(
-        Filesystem  $filesystem,
-        PackageGenerator $packageGenerator
+        protected Filesystem $filesystem,
+        protected PackageGenerator $packageGenerator
     )
     {
-        $this->filesystem = $filesystem;
-
-        $this->packageGenerator = $packageGenerator;
-
         parent::__construct();
     }
-    
+
     /**
      * Execute the console command.
      */
@@ -81,6 +60,8 @@ class MakeCommand extends Command
     }
 
     /**
+     * Get Package Name in Lower case.
+     * 
      * @return string
      */
     protected function getLowerName()
@@ -89,6 +70,8 @@ class MakeCommand extends Command
     }
 
     /**
+     * Get Class Name.
+     * 
      * @return string
      */
     protected function getClassName()
@@ -97,11 +80,22 @@ class MakeCommand extends Command
     }
 
     /**
-     * @param  string  $name
+     * Get NameSpace for Controller.
+     * 
      * @return string
      */
-    protected function getClassNamespace($name)
+    protected function getClassNamespace(string $name)
     {
         return str_replace('/', '\\', $name);
+    }
+
+    /**
+     * Get Controller Name.
+     * 
+     * @return string
+     */
+    protected function getClassControllerName()
+    {
+        return $this->getStudlyName() . 'Controller';
     }
 }

@@ -42,8 +42,6 @@ class NotificationMakeCommand extends MakeCommand
      */
     protected function getSourceFilePath()
     {
-        $path = base_path('packages/' . $this->argument('package')) . '/src/Notifications';
-
-        return $path . '/' . $this->getClassName() . '.php';
+        return base_path('packages/' . $this->argument('package')) . '/src/Notifications' . '/' . $this->getClassName() . '.php';
     }
 }

@@ -3,8 +3,8 @@
 namespace Webkul\PackageGenerator\Generators;
 
 use Illuminate\Config\Repository as Config;
+use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Str;
 use Webkul\PackageGenerator\Package;
 
 class PackageGenerator
@@ -24,38 +24,17 @@ class PackageGenerator
     protected $packageName;
 
     /**
-     * Repository object
-     *
-     * @var \Illuminate\Config\Repository
-     */
-    protected $config;
-
-    /**
-     * Filesystem object
-     *
-     * @var \Illuminate\Filesystem\Filesystem
-     */
-    protected $filesystem;
-
-    /**
-     * Package object
-     *
-     * @var string
-     */
-    protected $package;
-
-    /**
-     * @var boolean
+     * @var bool
      */
     protected $plain;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $force;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $type = 'package';
 
@@ -68,24 +47,17 @@ class PackageGenerator
         'package'  => [
             'views/admin/layouts/style'                  => 'Resources/views/admin/layouts/style.blade.php',
             'views/admin/index'                          => 'Resources/views/admin/index.blade.php',
-            'views/shop/default/index'                   => 'Resources/views/shop/default/index.blade.php',
-            'views/shop/velocity/index'                  => 'Resources/views/shop/velocity/index.blade.php',
+            'views/shop/index'                           => 'Resources/views/shop/index.blade.php',
             'scaffold/admin-menu'                        => 'Config/admin-menu.php',
             'scaffold/acl'                               => 'Config/acl.php',
             'assets/js/app'                              => 'Resources/assets/js/app.js',
-            'assets/sass/admin'                          => 'Resources/assets/sass/admin.scss',
-            'assets/sass/default'                        => 'Resources/assets/sass/default.scss',
-            'assets/sass/velocity'                       => 'Resources/assets/sass/velocity.scss',
-            'assets/images/Icon-Temp'                    => 'Resources/assets/images/Icon-Temp.svg',
-            'assets/images/Icon-Temp-Active'             => 'Resources/assets/images/Icon-Temp-Active.svg',
-            'assets/publishable/css/admin'               => '../publishable/assets/css/admin.css',
-            'assets/publishable/css/default'             => '../publishable/assets/css/default.css',
-            'assets/publishable/css/velocity'            => '../publishable/assets/css/velocity.css',
-            'assets/publishable/js/app'                  => '../publishable/assets/js/app.js',
-            'assets/publishable/images/Icon-Temp'        => '../publishable/assets/images/Icon-Temp.svg',
-            'assets/publishable/images/Icon-Temp-Active' => '../publishable/assets/images/Icon-Temp-Active.svg',
-            'webpack'                                    => '../webpack.mix.js',
+            'assets/css/app'                             => 'Resources/assets/css/app.css',
+            'assets/images/icon-temp'                    => 'Resources/assets/images/icon-temp.svg',
+            'assets/images/icon-temp-active'             => 'Resources/assets/images/icon-temp-active.svg',
             'package'                                    => '../package.json',
+            'postcss-config'                             => '../postcss.config.js',
+            'tailwind-config'                            => '../tailwind.config.js',
+            'vite-config'                                => '../vite.config.js',
         ],
 
         'payment'  => [
@@ -96,7 +68,7 @@ class PackageGenerator
         'shipping' => [
             'scaffold/carriers'               => 'Config/carriers.php',
             'scaffold/shipping-method-system' => 'Config/system.php',
-        ]
+        ],
     ];
 
     /**
@@ -136,31 +108,25 @@ class PackageGenerator
             'config'   => 'Config',
             'carriers' => 'Carriers',
             'provider' => 'Providers',
-        ]
+        ],
     ];
 
     /**
      * The constructor.
      * 
-     * @param  \Illuminate\Config\Repository  $config
-     * @param  \Illuminate\Filesystem\Filesystem  $filesystem
-     * @param  \Webkul\PackageGenerator\Package  $package
+     * @return void
      */
     public function __construct(
-        Config $config,
-        Filesystem $filesystem,
-        Package $package
+        protected Config $config,
+        protected Command $console,
+        protected Filesystem $filesystem,
+        protected Package $package
     )
     {
-        $this->config = $config;
-
-        $this->filesystem = $filesystem;
-
-        $this->package = $package;
     }
 
     /**
-     * Set console 
+     * Set console.
      *
      * @param  \Illuminate\Console\Command  $console
      * @return Webkul\PackageGenerator\Generators\PackageGenerator
@@ -175,10 +141,9 @@ class PackageGenerator
     /**
      * Set package.
      *
-     * @param  string  $packageName
      * @return Webkul\PackageGenerator\Generators\PackageGenerator
      */
-    public function setPackage($packageName)
+    public function setPackage(string $packageName)
     {
         $this->packageName = $packageName;
 
@@ -188,10 +153,9 @@ class PackageGenerator
     /**
      * Set package plain.
      *
-     * @param  string  $plain
      * @return Webkul\PackageGenerator\Generators\PackageGenerator
      */
-    public function setPlain($plain)
+    public function setPlain(string $plain)
     {
         $this->plain = $plain;
 
@@ -201,10 +165,9 @@ class PackageGenerator
     /**
      * Set force status.
      *
-     * @param  boolean  $force
      * @return \Webkul\PackageGenerator\Generators\PackageGenerator
      */
-    public function setForce($force)
+    public function setForce(bool $force)
     {
         $this->force = $force;
 
@@ -214,7 +177,7 @@ class PackageGenerator
     /**
      * Set type status.
      *
-     * @param  boolean  $isPaymentPackage
+     * @param  bool  $type
      * @return \Webkul\PackageGenerator\Generators\PackageGenerator
      */
     public function setType($type)
@@ -227,7 +190,7 @@ class PackageGenerator
     /**
      * Set isShippingPackage status.
      *
-     * @param  boolean  $isShippingPackage
+     * @param  bool  $isShippingPackage
      * @return \Webkul\PackageGenerator\Generators\PackageGenerator
      */
     public function setIsShippingPackage($isShippingPackage)
@@ -238,7 +201,7 @@ class PackageGenerator
     }
 
     /**
-     * Generate package
+     * Generate package.
      *
      * @return void
      */
@@ -266,7 +229,7 @@ class PackageGenerator
     }
 
     /**
-     * Generate package folders
+     * Generate package folders.
      *
      * @return void
      */
@@ -280,7 +243,7 @@ class PackageGenerator
     }
 
     /**
-     * Generate package files
+     * Generate package files.
      *
      * @return void
      */
@@ -302,67 +265,79 @@ class PackageGenerator
     }
 
     /**
-     * Generate package classes
+     * Generate package classes.
      *
      * @return void
      */
     public function createClasses()
     {
-        if ($this->type == 'package') {
-            $this->console->call('package:make-provider', [
-                'name'    => $this->packageName . 'ServiceProvider',
-                'package' => $this->packageName,
-            ]);
+        $commands = [
+            'package' => [
+                'package:make-provider' => [
+                    'name' => $this->packageName . 'ServiceProvider',
+                    'package' => $this->packageName
+                ],
 
-            $this->console->call('package:make-module-provider', [
-                'name'    => 'ModuleServiceProvider',
-                'package' => $this->packageName,
-            ]);
+                'package:make-module-provider' => [
+                    'name' => 'ModuleServiceProvider',
+                    'package' => $this->packageName
+                ],
 
-            $this->console->call('package:make-admin-controller', [
-                'name'    => $this->packageName . 'Controller',
-                'package' => $this->packageName
-            ]);
+                'package:make-admin-controller' => [
+                    'name' => $this->packageName . 'Controller',
+                    'package' => $this->packageName
+                ],
 
-            $this->console->call('package:make-shop-controller', [
-                'name'    => $this->packageName . 'Controller',
-                'package' => $this->packageName
-            ]);
+                'package:make-shop-controller' => [
+                    'name' => $this->packageName . 'Controller',
+                    'package' => $this->packageName
+                ],
 
-            $this->console->call('package:make-admin-route', [
-                'package' => $this->packageName
-            ]);
+                'package:make-admin-route' => [
+                    'package' => $this->packageName
+                ],
 
-            $this->console->call('package:make-shop-route', [
-                'package' => $this->packageName
-            ]);
-        } else if ($this->type == 'payment') {
-            $this->console->call('package:make-payment-method-provider', [
-                'name'    => $this->packageName . 'ServiceProvider',
-                'package' => $this->packageName,
-            ]);
+                'package:make-shop-route' => [
+                    'package' => $this->packageName
+                ],
+            ],
 
-            $this->console->call('package:make-payment', [
-                'name'    => $this->packageName,
-                'package' => $this->packageName,
-            ]);
-        } else if ($this->type == 'shipping') {
-            $this->console->call('package:make-shipping-method-provider', [
-                'name'    => $this->packageName . 'ServiceProvider',
-                'package' => $this->packageName,
-            ]);
+            'payment' => [
+                'package:make-payment-method-provider' => [
+                    'name' => $this->packageName . 'ServiceProvider',
+                    'package' => $this->packageName
+                ],
 
-            $this->console->call('package:make-shipping', [
-                'name'    => $this->packageName,
-                'package' => $this->packageName,
-            ]);
+                'package:make-payment' => [
+                    'name' => $this->packageName,
+                    'package' => $this->packageName
+                ],
+            ],
+
+            'shipping' => [
+                'package:make-shipping-method-provider' => [
+                    'name' => $this->packageName . 'ServiceProvider',
+                    'package' => $this->packageName
+                ],
+
+                'package:make-shipping' => [
+                    'name' => $this->packageName,
+                    'package' => $this->packageName
+                ],
+            ],
+        ];
+
+        if (array_key_exists($this->type, $commands)) {
+            foreach ($commands[$this->type] as $command => $arguments) {
+                $this->console->call($command, $arguments);
+            }
         }
     }
 
     /**
-     * @return array
+     * Returns Stub variables.
      */
-    protected function getStubVariables()
+    protected function getStubVariables(): array
     {
         return [
             'LOWER_NAME'      => $this->getLowerName(),
@@ -373,34 +348,29 @@ class PackageGenerator
     }
 
     /**
-     * @return string
+     * Returns class name.
      */
-    protected function getClassName()
+    protected function getClassName(): string
     {
         return class_basename($this->packageName);
     }
 
     /**
-     * @param  string  $name
-     * @return string
+     * Returns class Namespace.
      */
-    protected function getClassNamespace($name)
+    protected function getClassNamespace(string $name) : string
     {
         return str_replace('/', '\\', $name);
     }
 
     /**
-     * Returns content of stub file
+     * Returns content of stub file.
      *
-     * @param  string  $stub
-     * @param  array  $variables
      * @return string
      */
-    public function getStubContents($stub, $variables = [])
+    public function getStubContents(string $stub, array $variables = [])
     {
-        $path = __DIR__ . '/../stubs/' . $stub . '.stub';
-
-        $contents = file_get_contents($path);
+        $contents = file_get_contents(__DIR__ . '/../stubs/' . $stub . '.stub');
 
         foreach ($variables as $search => $replace) {
             $contents = str_replace('$' . strtoupper($search) . '$', $replace, $contents);
@@ -410,17 +380,17 @@ class PackageGenerator
     }
 
     /**
-     * @return string
+     * Returns name in capital letter.
      */
-    protected function getCapitalizeName()
+    protected function getCapitalizeName(): string
     {
         return ucwords(class_basename($this->packageName));
     }
 
     /**
-     * @return string
+     * Returns name in small letter.
      */
-    protected function getLowerName()
+    protected function getLowerName() : string
     {
         return strtolower(class_basename($this->packageName));
     }

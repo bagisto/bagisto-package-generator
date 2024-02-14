@@ -17,14 +17,14 @@ class MigrationMakeCommand extends MakeCommand
      * @var string
      */
     protected $description = 'Create a new migration.';
-    
+
     /**
      * Execute the console command.
      */
     public function handle()
     {
         $this->call('make:migration', [
-            'name' => $this->argument('name'),
+            'name'   => $this->argument('name'),
             '--path' => 'packages/' . $this->argument('package') . '/src/Database/Migrations',
         ]);
     }

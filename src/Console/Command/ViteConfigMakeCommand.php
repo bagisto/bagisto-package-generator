@@ -2,28 +2,28 @@
 
 namespace Webkul\PackageGenerator\Console\Command;
 
-class MailMakeCommand extends MakeCommand
+class ViteConfigMakeCommand extends MakeCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'package:make-mail {name} {package} {--force}';
+    protected $signature = 'package:make-vite-config {package} {--force}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new mail.';
+    protected $description = 'Create a new vite config file.';
 
     /**
      * @return mixed
      */
     protected function getStubContents()
     {
-        return $this->packageGenerator->getStubContents('mail', $this->getStubVariables());
+        return $this->packageGenerator->getStubContents('vite-config', $this->getStubVariables());
     }
 
     /**
@@ -32,8 +32,7 @@ class MailMakeCommand extends MakeCommand
     protected function getStubVariables()
     {
         return [
-            'NAMESPACE' => $this->getClassNamespace($this->argument('package') . '/Mail'),
-            'CLASS'     => $this->getClassName(),
+            'LOWER_NAME' => $this->getLowerName(),
         ];
     }
 
@@ -42,6 +41,6 @@ class MailMakeCommand extends MakeCommand
      */
     protected function getSourceFilePath()
     {
-        return base_path('packages/' . $this->argument('package')) . '/src/Mail' . '/' . $this->getClassName() . '.php';
+        return base_path('packages/' . $this->argument('package')) . '/vite.config.js';
     }
 }

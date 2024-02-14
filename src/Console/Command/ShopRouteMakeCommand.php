@@ -2,9 +2,6 @@
 
 namespace Webkul\PackageGenerator\Console\Command;
 
-use Illuminate\Support\Str;
-use Webkul\PackageGenerator\Generators\PackageGenerator;
-
 class ShopRouteMakeCommand extends MakeCommand
 {
     /**
@@ -36,6 +33,7 @@ class ShopRouteMakeCommand extends MakeCommand
     {
         return [
             'CONTROLLER_CLASS_NAME' => $this->getClassNamespace($this->argument('package') . '/Http/Controllers/Shop/' . $this->getStudlyName() . 'Controller'),
+            'CLASS'                 => $this->getClassControllerName(),
             'LOWER_NAME'            => $this->getLowerName(),
         ];
     }
@@ -45,8 +43,6 @@ class ShopRouteMakeCommand extends MakeCommand
      */
     protected function getSourceFilePath()
     {
-        $path = base_path('packages/' . $this->argument('package')) . '/src/Http';
-
-        return $path . '/shop-routes.php';
+        return base_path('packages/' . $this->argument('package')) . '/src/Routes' . '/shop-routes.php';
     }
 }
