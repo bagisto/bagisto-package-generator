@@ -10,7 +10,7 @@ It packs in lots of demanding features that allows your business to scale in no 
 
 ## 2. Requirements
 
-* **Bagisto**: v2.0 or higher.
+* **Bagisto**: v2.3 or higher.
 
 ## 3. Installation
 

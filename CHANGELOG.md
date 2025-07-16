@@ -1,8 +1,12 @@
-# CHANGELOG for v2.0.x
+# CHANGELOG for v2.x
 
 This changelog consists the bug & security fixes and new features being included in the releases listed below.
 
-## **v2.0.0(07th of February, 2024)** - _Release_
+## **v2.1.0 (16th of July, 2025)** - _Release_
+
+- Compatibility: Supports Bagisto version v2.3.
+
+## **v2.0.0 (07th of February, 2024)** - _Release_
 
 ### Features:
 
