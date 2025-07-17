@@ -5,6 +5,7 @@ return [
         'key'    => 'sales.carriers.$LOWER_NAME$',
         'name'   => '$CAPITALIZE_NAME$',
         'sort'   => 1,
+        'info'   => 'Information about $CAPITALIZE_NAME$',
         'fields' => [
             [
                 'name'          => 'title',
