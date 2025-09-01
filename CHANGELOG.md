@@ -2,6 +2,10 @@
 
 This changelog consists the bug & security fixes and new features being included in the releases listed below.
 
+## **v2.1.1 (1st of September, 2025)** - _Release_
+
+- Compatibility: Fixed the shipping method stubs for v2.3.
+
 ## **v2.1.0 (16th of July, 2025)** - _Release_
 
 - Compatibility: Supports Bagisto version v2.3.
