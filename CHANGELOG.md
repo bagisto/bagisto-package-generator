@@ -2,6 +2,12 @@
 
 This changelog consists the bug & security fixes and new features being included in the releases listed below.
 
+## Unreleased
+
+- Fixed payment method file convention.
+
+- Added missing `info` key which causing error.
+
 ## **v2.1.1 (1st of September, 2025)** - _Release_
 
 - Compatibility: Fixed the shipping method stubs for v2.3.
