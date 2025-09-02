@@ -4,6 +4,7 @@ return [
     [
         'key'    => 'sales.payment_methods.$LOWER_NAME$',
         'name'   => '$CAPITALIZE_NAME$',
+        'info'   => 'Information about $CAPITALIZE_NAME$',
         'sort'   => 1,
         'fields' => [
             [

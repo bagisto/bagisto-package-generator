@@ -61,7 +61,7 @@ class PackageGenerator
         ],
 
         'payment'  => [
-            'scaffold/paymentmethods'        => 'Config/paymentmethods.php',
+            'scaffold/payment-methods'       => 'Config/payment-methods.php',
             'scaffold/payment-method-system' => 'Config/system.php',
         ],
 
