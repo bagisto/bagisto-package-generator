@@ -6,6 +6,6 @@ return [
         'name'  => '$CAPITALIZE_NAME$',
         'route' => 'admin.$LOWER_NAME$.index',
         'sort'  => 2,
-        'icon'  => 'temp-icon',
+        'icon'  => 'icon-sales',
     ]
 ];

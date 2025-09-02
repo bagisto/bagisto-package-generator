@@ -60,7 +60,7 @@ class MakeCommand extends Command
     }
 
     /**
-     * Get Package Name in Lower case.
+     * Get name in Lower case.
      * 
      * @return string
      */
@@ -70,7 +70,7 @@ class MakeCommand extends Command
     }
 
     /**
-     * Get Class Name.
+     * Get class name.
      * 
      * @return string
      */
@@ -80,7 +80,7 @@ class MakeCommand extends Command
     }
 
     /**
-     * Get NameSpace for Controller.
+     * Get namespace for controller.
      * 
      * @return string
      */
@@ -90,7 +90,7 @@ class MakeCommand extends Command
     }
 
     /**
-     * Get Controller Name.
+     * Get controller name.
      * 
      * @return string
      */

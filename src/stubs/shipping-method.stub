@@ -2,28 +2,34 @@
 
 namespace $NAMESPACE$;
 
-use Webkul\Shipping\Carriers\AbstractShipping;
+use Webkul\Checkout\Facades\Cart;
 use Webkul\Checkout\Models\CartShippingRate;
+use Webkul\Shipping\Carriers\AbstractShipping;
 
 class $CLASS$ extends AbstractShipping
 {
     /**
-     * Shipping method code
-     *
-     * @var string
+     * Shipping method carrier code.
      */
-    protected $code  = '$LOWER_NAME$';
+    protected $code = '$LOWER_NAME$';
 
     /**
-     * Returns rate for shipping method
+     * Shipping method code.
+     */
+    protected $method = '$LOWER_NAME$_$LOWER_NAME$';
+
+    /**
+     * Calculate rate for shipping method.
      *
-     * @return CartShippingRate|false
+     * @return \Webkul\Checkout\Models\CartShippingRate|false
      */
     public function calculate()
     {
         if (! $this->isAvailable()) {
             return false;
         }
+
+        $cart = Cart::getCart();
 
         $object = new CartShippingRate;
 
@@ -34,6 +40,12 @@ class $CLASS$ extends AbstractShipping
         $object->method_description = $this->getConfigData('description');
         $object->price = 0;
         $object->base_price = 0;
+
+        // Add your shipping calculation logic here
+        $price = $this->getConfigData('default_rate') ?? 0;
+        
+        $object->price = core()->convertPrice($price);
+        $object->base_price = $price;
 
         return $object;
     }

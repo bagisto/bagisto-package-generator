@@ -2,11 +2,13 @@
 
 This changelog consists the bug & security fixes and new features being included in the releases listed below.
 
-## Unreleased
+## **v2.1.2 (2nd of September, 2025)** - _Release_
 
 - Fixed payment method file convention.
 
 - Added missing `info` key which causing error.
+
+- Updated some classes as per latest syntaxes.
 
 ## **v2.1.1 (1st of September, 2025)** - _Release_
 

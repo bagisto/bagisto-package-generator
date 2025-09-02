@@ -2,10 +2,29 @@
 
 namespace $NAMESPACE$;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use $PACKAGE$\Contracts\$CLASS$ as $CLASS$Contract;
 
 class $CLASS$ extends Model implements $CLASS$Contract
 {
-    protected $fillable = [];
+    use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        // Add your fillable attributes here
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        // Add your attribute casts here
+    ];
 }

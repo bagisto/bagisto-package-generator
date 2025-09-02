@@ -7,22 +7,18 @@ use Illuminate\Support\ServiceProvider;
 class $CLASS$ extends ServiceProvider
 {
     /**
-     * Bootstrap services.
-     *
-     * @return void
+     * Register services.
      */
-    public function boot()
+    public function register(): void
     {
+        $this->registerConfig();
     }
 
     /**
-     * Register services.
-     *
-     * @return void
+     * Bootstrap services.
      */
-    public function register()
+    public function boot(): void
     {
-        $this->registerConfig();
     }
     
     /**

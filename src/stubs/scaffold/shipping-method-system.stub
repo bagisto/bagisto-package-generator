@@ -3,26 +3,26 @@
 return [
     [
         'key'    => 'sales.carriers.$LOWER_NAME$',
-        'name'   => '$CAPITALIZE_NAME$',
-        'info'   => 'Information about $CAPITALIZE_NAME$',
+        'name'   => '$CAPITALIZE_NAME$', // use translation
+        'info'   => 'Information about $CAPITALIZE_NAME$', // use translation
         'sort'   => 1,
         'fields' => [
             [
                 'name'          => 'title',
-                'title'         => 'admin::app.admin.system.title',
+                'title'         => 'Title', // use translation
                 'type'          => 'text',
                 'validation'    => 'required',
                 'channel_based' => false,
                 'locale_based'  => true,
             ], [
                 'name'          => 'description',
-                'title'         => 'admin::app.admin.system.description',
+                'title'         => 'Description', // use translation
                 'type'          => 'textarea',
                 'channel_based' => false,
                 'locale_based'  => true,
             ], [
                 'name'          => 'active',
-                'title'         => 'admin::app.admin.system.status',
+                'title'         => 'Status', // use translation
                 'type'          => 'boolean',
                 'validation'    => 'required',
                 'channel_based' => false,

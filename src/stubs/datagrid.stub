@@ -8,28 +8,30 @@ use Webkul\DataGrid\DataGrid;
 class $CLASS$ extends DataGrid
 {
     /**
+     * Primary column.
+     */
+    protected $primaryColumn = 'id';
+
+    /**
      * Prepare query builder.
-     *
-     * @return \Illuminate\Database\Query\Builder
      */
     public function prepareQueryBuilder()
     {
-        //queryBuilder = DB::table('table')->addSelect('id');
+        $queryBuilder = DB::table('your_table_name')
+            ->select('id');
 
-        //return $queryBuilder;
+        return $queryBuilder;
     }
 
     /**
-     * Add columns.
-     *
-     * @return void
+     * Prepare columns.
      */
-    public function prepareColumns()
+    public function prepareColumns(): void
     {
         $this->addColumn([
             'index'      => 'id',
-            'label'      => 'Id',
-            'type'       => 'number',
+            'label'      => trans('admin::app.datagrid.id'),
+            'type'       => 'integer',
             'searchable' => false,
             'sortable'   => true,
             'filterable' => true,
@@ -38,10 +40,46 @@ class $CLASS$ extends DataGrid
 
     /**
      * Prepare actions.
-     *
-     * @return void
      */
-    public function prepareActions()
+    public function prepareActions(): void
     {
+        if (bouncer()->hasPermission('$LOWER_NAME$.edit')) {
+            $this->addAction([
+                'index'  => 'edit',
+                'icon'   => 'icon-edit',
+                'title'  => trans('admin::app.datagrid.edit'),
+                'method' => 'GET',
+                'url'    => function ($row) {
+                    return route('admin.$LOWER_NAME$.edit', $row->id);
+                },
+            ]);
+        }
+
+        if (bouncer()->hasPermission('$LOWER_NAME$.delete')) {
+            $this->addAction([
+                'index'  => 'delete',
+                'icon'   => 'icon-delete',
+                'title'  => trans('admin::app.datagrid.delete'),
+                'method' => 'DELETE',
+                'url'    => function ($row) {
+                    return route('admin.$LOWER_NAME$.delete', $row->id);
+                },
+            ]);
+        }
+    }
+
+    /**
+     * Prepare mass actions.
+     */
+    public function prepareMassActions(): void
+    {
+        if (bouncer()->hasPermission('$LOWER_NAME$.delete')) {
+            $this->addMassAction([
+                'icon'   => 'icon-delete',
+                'title'  => trans('admin::app.datagrid.delete'),
+                'method' => 'POST',
+                'url'    => route('admin.$LOWER_NAME$.mass_delete'),
+            ]);
+        }
     }
 }

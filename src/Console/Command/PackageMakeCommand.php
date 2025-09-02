@@ -9,7 +9,7 @@ class PackageMakeCommand extends MakeCommand
      *
      * @var string
      */
-    protected $signature = 'package:make {package} {--plain}  {--force}';
+    protected $signature = 'package:make {package} {--plain} {--force}';
 
     /**
      * The console command description.

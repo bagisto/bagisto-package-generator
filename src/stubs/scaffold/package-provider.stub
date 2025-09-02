@@ -8,11 +8,17 @@ use Illuminate\Support\Facades\Event;
 class $CLASS$ extends ServiceProvider
 {
     /**
-     * Bootstrap services.
-     *
-     * @return void
+     * Register services.
      */
-    public function boot()
+    public function register(): void
+    {
+        $this->registerConfig();
+    }
+
+    /**
+     * Bootstrap services.
+     */
+    public function boot(): void
     {
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
@@ -27,16 +33,6 @@ class $CLASS$ extends ServiceProvider
         Event::listen('bagisto.admin.layout.head', function($viewRenderEventManager) {
             $viewRenderEventManager->addTemplate('$LOWER_NAME$::admin.layouts.style');
         });
-    }
-
-    /**
-     * Register services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->registerConfig();
     }
 
     /**

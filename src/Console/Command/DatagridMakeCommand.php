@@ -32,8 +32,9 @@ class DatagridMakeCommand extends MakeCommand
     protected function getStubVariables()
     {
         return [
-            'NAMESPACE' => $this->getClassNamespace($this->argument('package') . '/Datagrids'),
-            'CLASS'     => $this->getClassName(),
+            'NAMESPACE'  => $this->getClassNamespace($this->argument('package') . '/Datagrids'),
+            'CLASS'      => $this->getClassName(),
+            'LOWER_NAME' => $this->getLowerName(),
         ];
     }
 

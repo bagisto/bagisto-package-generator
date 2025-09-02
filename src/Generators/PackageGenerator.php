@@ -155,7 +155,7 @@ class PackageGenerator
      *
      * @return Webkul\PackageGenerator\Generators\PackageGenerator
      */
-    public function setPlain(string $plain)
+    public function setPlain(bool $plain)
     {
         $this->plain = $plain;
 
@@ -275,7 +275,7 @@ class PackageGenerator
             'package' => [
                 'package:make-provider' => [
                     'name' => $this->packageName . 'ServiceProvider',
-                    'package' => $this->packageName
+                    'package' => $this->packageName,
                 ],
 
                 'package:make-module-provider' => [

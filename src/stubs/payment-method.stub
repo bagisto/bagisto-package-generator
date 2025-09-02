@@ -13,8 +13,10 @@ class $CLASS$ extends Payment
      */
     protected $code  = '$LOWER_NAME$';
 
+    /**
+     * Get redirect url.
+     */
     public function getRedirectUrl()
     {
-        
     }
 }

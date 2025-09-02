@@ -6,6 +6,10 @@ use Konekt\Concord\BaseModuleServiceProvider;
 
 class ModuleServiceProvider extends BaseModuleServiceProvider
 {
-    protected $models = [
-    ];
+    /**
+     * Models.
+     *
+     * @var array
+     */
+    protected $models = [];
 }
